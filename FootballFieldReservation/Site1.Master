@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="FootballFieldReservation.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <%-- css files --%>
+    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+    <link href="datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <%-- js files --%>
+    <script src="Bootstrap/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="Bootstrap/js/popper.min.js"></script>
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+
+
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#">
+                    <p>hello</p>
+                </a>
+            </nav>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
