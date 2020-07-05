@@ -1,0 +1,9 @@
+﻿#sticky-footer {
+    flex-shrink: none;
+}
+#my-h1 {
+    text-align: center;
+}
+h1 {
+    text-align: center;
+}

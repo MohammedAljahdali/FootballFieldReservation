@@ -9,6 +9,7 @@
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="fontawesome/css/all.css" rel="stylesheet" />
     <link href="datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="CustomFiles/css/custom_css.css" rel="stylesheet" />
     <%-- js files --%>
     <script src="Bootstrap/js/jquery-3.5.1.slim.min.js"></script>
     <script src="Bootstrap/js/popper.min.js"></script>
@@ -23,14 +24,38 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#">
-                    <p>hello</p>
-                </a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+              </div>
             </nav>
+        </div>
+        <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+            <div class="container text-center">
+                <small>&copy Football Field Reservation By: Bandar Alrooqi, Faisal Aljahdali and Mohammed Aljahdali</small>
+            </div>
+        </footer>
     </form>
 </body>
 </html>
