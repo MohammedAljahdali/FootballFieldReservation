@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name *" value="" />
+                            <input type="text" id="inputField1" runat="server" class="form-control" placeholder="Your Name *" value="" />
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Phone Number *" value="" />
@@ -27,7 +27,8 @@
                         </div>
                     </div>
                 </div>
-                <button id="submitButton" type="button" class="btnSubmit">Submit</button>
+                <button id="submitButton" runat="server" onserverclick="submitClicked" type="button" class="btnSubmit">Submit</button>
+                
                 
             </div>
         </div>
