@@ -50,6 +50,13 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <%--  Alert Message  --%>
+        <div class="MessagePanelDiv">
+            <asp:Panel ID="alertMessage" runat="server" Visible="False">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <asp:Label ID="labelAlertMessage" runat="server" />
+            </asp:Panel>
+        </div>
         <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
             <div class="container text-center">
                 <small>&copy Football Field Reservation By: Bandar Alrooqi, Faisal Aljahdali and Mohammed Aljahdali</small>

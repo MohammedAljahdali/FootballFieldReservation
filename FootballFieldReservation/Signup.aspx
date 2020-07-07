@@ -15,7 +15,7 @@
                             <input type="text" id="nameInputField" runat="server" class="form-control" placeholder="Your Name *" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="text" id="phoneInputField" runat="server" class="form-control" placeholder="Phone Number *" value="" />
+                            <input type="text" id="idInputField" runat="server" class="form-control" placeholder="ID Number *" value="" />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -28,6 +28,7 @@
                     </div>
                 </div>
                 <button id="submitButton" runat="server" onserverclick="submitClicked" type="button" class="btnSubmit">Submit</button>
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="test alert" />
             </div>
         </div>
     </div>
