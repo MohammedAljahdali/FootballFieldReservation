@@ -15,13 +15,40 @@ namespace FootballFieldReservation
     {
 
         /// <summary>
-        /// inputField1 control.
+        /// nameInputField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputField1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nameInputField;
+
+        /// <summary>
+        /// phoneInputField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText phoneInputField;
+
+        /// <summary>
+        /// passwordInputField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText passwordInputField;
+
+        /// <summary>
+        /// confirmPasswordInputField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText confirmPasswordInputField;
 
         /// <summary>
         /// submitButton control.

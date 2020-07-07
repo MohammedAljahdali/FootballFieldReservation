@@ -17,6 +17,12 @@ namespace FootballFieldReservation
         protected void submitClicked(object sender, EventArgs e)
         {
             inputField1.Value = "Hello";
+            
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
