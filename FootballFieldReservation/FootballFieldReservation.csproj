@@ -1767,6 +1767,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="logIn.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="fontawesome\less\brands.less" />
     <Content Include="fontawesome\less\fontawesome.less" />
@@ -1885,6 +1886,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="logIn.aspx.cs">
+      <DependentUpon>logIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logIn.aspx.designer.cs">
+      <DependentUpon>logIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
