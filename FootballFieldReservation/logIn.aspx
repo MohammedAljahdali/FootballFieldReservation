@@ -19,14 +19,18 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <asp:TextBox ID="passwordTxt" runat="server" CssClass="form-control" placeholder="password"></asp:TextBox>
+                            <asp:TextBox ID="passwordTxt" runat="server" CssClass="form-control" placeholder="password" TextMode="Password"></asp:TextBox>
                         </div>
                         <div class="form-group">
                         </div>
                     </div>
                 </div>
                 <asp:Button ID="loginButton" runat="server" CssClass="btnSubmit" Text="Login" OnClick="loginButton_Click" />
+                
             </div>
         </div>
+           
+            <asp:LinkButton ID="ForgotPassCode" runat="server" OnClick="ForgotPassCode_Click">Forgot Password</asp:LinkButton>
+           
     </div>
 </asp:Content>

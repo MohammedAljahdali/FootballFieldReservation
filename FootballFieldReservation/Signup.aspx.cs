@@ -42,7 +42,7 @@ namespace FootballFieldReservation
         {
             
            int success = 0;
-           if (passwordInputField.Value != confirmPasswordInputField.Value)          
+            if (passwordInputField.Value != confirmPasswordInputField.Value)          
                return;
            
            string register = " insert into User (user_name, user_id, user_password) values (@user_name,@user_id,@user_password)";
