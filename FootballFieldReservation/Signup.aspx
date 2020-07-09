@@ -13,12 +13,12 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server" ControlToValidate="nameInputField" ErrorMessage="*" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorName" runat="server" ControlToValidate="nameInputField" ErrorMessage="Invalid" ValidationExpression="^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorName" runat="server" ControlToValidate="nameInputField" ErrorMessage="Invalid" ValidationExpression="^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)" ForeColor="Red"></asp:RegularExpressionValidator>
                             <asp:TextBox id="nameInputField" runat="server" CssClass="form-control" placeholder="Your Name *" ></asp:TextBox>       
                         </div>
                         <div class="form-group">
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorID" runat="server" ControlToValidate="idInputField" ErrorMessage="*" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorID" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="idInputField"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorID" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="idInputField" ForeColor="Red"></asp:RegularExpressionValidator>
                             <asp:TextBox id="idInputField" runat="server" CssClass="form-control" placeholder="ID Number *"></asp:TextBox>
                         </div>
                     </div>
@@ -30,6 +30,7 @@
                         <div class="form-group">
                             <asp:RequiredFieldValidator
                                 ID="RequiredFieldValidatorPasswordConfirm" runat="server" ControlToValidate="confirmPasswordInputField" ErrorMessage="*" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:Label ID="confirmPasswordValidation" runat="server"></asp:Label>
                             <asp:TextBox id="confirmPasswordInputField" runat="server" CssClass="form-control" placeholder="Confirm Password *" TextMode="Password"></asp:TextBox>
                         </div>
                     </div>

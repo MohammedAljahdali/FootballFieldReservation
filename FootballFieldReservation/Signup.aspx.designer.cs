@@ -96,6 +96,15 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPasswordConfirm;
 
         /// <summary>
+        /// confirmPasswordValidation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label confirmPasswordValidation;
+
+        /// <summary>
         /// confirmPasswordInputField control.
         /// </summary>
         /// <remarks>
