@@ -1820,6 +1820,7 @@
     <Content Include="fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff2" />
     <Content Include="Resources\field.jpg" />
+    <Content Include="Resources\field1.jpg" />
     <Content Include="Signup.aspx" />
     <Content Include="Home.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

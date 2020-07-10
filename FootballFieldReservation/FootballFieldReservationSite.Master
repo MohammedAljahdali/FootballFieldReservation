@@ -14,7 +14,17 @@
     <script src="Bootstrap/js/jquery-3.5.1.slim.min.js"></script>
     <script src="Bootstrap/js/popper.min.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
-
+    <style>
+        .bg-1 {
+            background-color: #1abc9c !important; /* Green */
+            color: #ffffff;
+        }
+        .container-fluid {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+        .margin {margin-bottom: 45px;}
+    </style>
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
