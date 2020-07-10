@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <p>
-                            <asp:LinkButton class="footerlinks" ID="adminLoginLink" runat="server">Admin Login</asp:LinkButton>
+                            <asp:LinkButton class="footerlinks" ID="adminLoginLink" runat="server" PostBackUrl="~/Login.aspx">Admin Login</asp:LinkButton>
                             &nbsp;
                             <asp:LinkButton class="footerlinks" ID="adminFieldLink" runat="server">Admin Fields Mangment</asp:LinkButton>
                             &nbsp;
