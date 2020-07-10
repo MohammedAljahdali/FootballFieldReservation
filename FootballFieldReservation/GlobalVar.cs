@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace FootballFieldReservation
 {
-    public class GlobalVar
+    public static class GlobalVar
     {
 
         public static SqlConnection connection = new SqlConnection(
@@ -17,6 +18,10 @@ namespace FootballFieldReservation
                 .Substring(0,
                 AppDomain.CurrentDomain.BaseDirectory.ToString().Length -
                 "FootballFieldReservation".Length - 1) + "ignore/" + "conn.txt").ReadToEnd());
+        //public static SqlConnection connection = new SqlConnection(
+        //  "Data Source=DESKTOP-0QMNFDM;Database=FootballFieldReservation;Integrated Security=True;Connect Timeout=30;Encrypt=False;" +
+        //"TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+ 
 
         // = new SqlConnection("test");
         /// <summary>
@@ -38,10 +43,6 @@ namespace FootballFieldReservation
             panelMessage.Visible = true;
         }
 
-        protected static void readConn()
-        {
-
-        }
     }
 
     public enum WarningType

@@ -9,28 +9,6 @@ using System.Web.UI.WebControls;
 
 namespace FootballFieldReservation
 {
-    public static class GlobalVar
-    {
-        public static SqlConnection connection; // = new SqlConnection("test");
-        /// <summary>
-        /// Shows a message based of type and message
-        /// </summary>
-        /// <param name="message">Message to display</param>
-        /// <param name="type">ENUM type of the message</param>
-
-        public static void showMessage(string message, WarningType type, MasterPage master)
-        {
-            //gets the controls from the page
-            Panel panelMessage = master.FindControl("alertMessage") as Panel;
-            Label labelAlertMessage = panelMessage.FindControl("labelAlertMessage") as Label;
-
-            //sets the message and the type of alert, than displays the message
-            labelAlertMessage.Text = message;
-            panelMessage.CssClass = string.Format("alert alert-{0} alert-dismissable", type.ToString().ToLower());
-            panelMessage.Attributes.Add("role", "alert");
-            panelMessage.Visible = true;
-        }
-    }
     public partial class Signup : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -40,81 +18,47 @@ namespace FootballFieldReservation
 
         protected void submitClicked(object sender, EventArgs e)
         {
-            
 
-           //int success = 0;
-           //if (passwordInputField.Value != confirmPasswordInputField.Value)          
-           //    return;
-           //
-           //string register = " insert into User (user_name, user_id, user_password) values (@user_name,@user_id,@user_password)";
-           //SqlCommand registerUser = new SqlCommand(register, GlobalVar.connection);
-           //registerUser.Parameters.AddWithValue("@user_id", int.Parse(idInputField.Value));
-           //registerUser.Parameters.AddWithValue("@user_name", nameInputField.Value);
-           //registerUser.Parameters.AddWithValue("@user_password", passwordInputField.Value);
-           //try
-           //{
-           //    registerUser.Connection.Open();
-           //    //executing the method of command object
-           //    // ExecuteNonQuery() method of command object is used for insert the record
-           //    success = registerUser.ExecuteNonQuery();
-           //
-           //    if (success == 1)
-           //    {
-           //        // go to the home page
-           //    }
-           //    else 
-           //    {
-           //         GlobalVar.showMessage("Signing Up Failed Try Again Please", WarningType.Warning, Master);
-           //     }
-           //        
-           //} // end of try
-           //catch (Exception ex)
-           //{
-           //     GlobalVar.showMessage(ex.Message, WarningType.Danger, Master);
-           // }
-           //finally
-           //{
-           //    registerUser.Connection.Close();
-           //}
 
-           int success = 0;
+            int success = 0;
             if (passwordInputField.Text != confirmPasswordInputField.Text)
             {
                 confirmPasswordValidation.Text = "Passwords does not match";
                 confirmPasswordValidation.ForeColor = System.Drawing.Color.Red;
                 return;
-            }         
+            }
 
-           string register = " insert into User (user_name, user_id, user_password) values (@user_name,@user_id,@user_password)";
-           SqlCommand registerUser = new SqlCommand(register, GlobalVar.connection);
-           registerUser.Parameters.AddWithValue("@user_id", int.Parse(idInputField.Text));
-           registerUser.Parameters.AddWithValue("@user_name", nameInputField.Text);
-           registerUser.Parameters.AddWithValue("@user_password", passwordInputField.Text);
-           try
-           {
-               registerUser.Connection.Open();
-               //executing the method of command object
-               // ExecuteNonQuery() method of command object is used for insert the record
-               success = registerUser.ExecuteNonQuery();
+            string register = "insert into [User] (user_id, user_name, user_password, user_role) values (@user_id,@user_name,@user_password,@user_role)";
+            SqlCommand registerUser = new SqlCommand(register, GlobalVar.connection);
+            registerUser.Parameters.AddWithValue("@user_id", idInputField.Text);
+            registerUser.Parameters.AddWithValue("@user_name", nameInputField.Text);
+            registerUser.Parameters.AddWithValue("@user_password", passwordInputField.Text);
+            registerUser.Parameters.AddWithValue("@user_role", "user");
+            try
+            {
+                registerUser.Connection.Open();
+                //executing the method of command object
+                // ExecuteNonQuery() method of command object is used for insert the record
+                success = registerUser.ExecuteNonQuery();
 
-               if (success == 1)
-               {
-                   // go to the home page
-               }
-               else 
-               {
+                if (success == 1)
+                {
+                    Response.Redirect("Home.aspx");
+                }
+                else
+                {
                     GlobalVar.showMessage("Signing Up Failed Try Again Please", WarningType.Warning, Master);
                 }
-                   
-           } // end of try
-           catch (Exception ex)
-           {
+
+            } // end of try
+            catch (Exception ex)
+            {
                 GlobalVar.showMessage(ex.Message, WarningType.Danger, Master);
             }
-           finally
-           {
-               registerUser.Connection.Close();
-           }
+            finally
+            {
+                registerUser.Connection.Close();
+            }
 
 
         }
@@ -123,12 +67,5 @@ namespace FootballFieldReservation
         {
             GlobalVar.showMessage("test", WarningType.Danger, Master);
         }
-    }
-    public enum WarningType
-    {
-        Success,
-        Info,
-        Warning,
-        Danger
     }
 }
