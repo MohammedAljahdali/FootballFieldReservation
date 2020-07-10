@@ -18,9 +18,6 @@ namespace FootballFieldReservation
                 .Substring(0,
                 AppDomain.CurrentDomain.BaseDirectory.ToString().Length -
                 "FootballFieldReservation".Length - 1) + "ignore/" + "conn.txt").ReadToEnd());
-        //public static SqlConnection connection = new SqlConnection(
-        //  "Data Source=DESKTOP-0QMNFDM;Database=FootballFieldReservation;Integrated Security=True;Connect Timeout=30;Encrypt=False;" +
-        //"TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
  
 
         // = new SqlConnection("test");
@@ -41,6 +38,37 @@ namespace FootballFieldReservation
             panelMessage.CssClass = string.Format("alert alert-{0} alert-dismissable", type.ToString().ToLower());
             panelMessage.Attributes.Add("role", "alert");
             panelMessage.Visible = true;
+        }
+
+        public static void displayUsers(GridView gridView, MasterPage master)
+        {
+            // Create SQlStatement
+            string selsql = "select * from [User]";
+            //create command object
+            SqlCommand cmd = new SqlCommand(selsql, connection);
+            try
+            { // open the connection
+                cmd.Connection.Open();
+                // cretae data reader obj
+                SqlDataReader dr;
+                //executing the method of command object
+                dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                { // binding grid view with data source
+                    gridView.DataSource = dr;
+                    gridView.DataBind();
+                }
+                else
+                    showMessage("sorry something happend", WarningType.Warning, master);
+            } // end of try
+            catch (Exception ex)
+            {
+                showMessage("error reading the database: "+ex.Message, WarningType.Danger, master);
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
         }
 
     }
