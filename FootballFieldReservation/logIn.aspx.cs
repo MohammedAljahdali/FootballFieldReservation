@@ -16,8 +16,8 @@ namespace FootballFieldReservation
 
         }
 
-        //protected void loginButton_Click(object sender, EventArgs e)
-        //{
+        protected void loginButton_Click(object sender, EventArgs e)
+        {
         //      SqlCommand command = new SqlCommand("select * from **** where [Email/User Name]='" +userNameTxt.Text+ "' and Password='" +passwordTxt.Text+ "'", GlobalVar.connection);
         //    try
         //    {
@@ -45,7 +45,7 @@ namespace FootballFieldReservation
         //    }
 
         //    command.Connection.Close();
-        //}
+        }
 
         protected void ForgotPassCode_Click(object sender, EventArgs e)
         {
