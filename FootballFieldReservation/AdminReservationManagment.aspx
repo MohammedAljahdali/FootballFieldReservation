@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FootballFieldReservationSite.Master" AutoEventWireup="true" CodeBehind="AdminUserMangament.aspx.cs" Inherits="FootballFieldReservation.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FootballFieldReservationSite.Master" AutoEventWireup="true" CodeBehind="AdminReservationManagment.aspx.cs" Inherits="FootballFieldReservation.AdminReservationManagment" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -9,12 +10,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h4 class="text-center">User Mangament</h4>
+                                <h4 class="text-center">Fields Mangament</h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p class="text-center">Add, Update and Delete Users</p>
+                                <p class="text-center">Add, Update and Delete Reservations</p>
                             </div>
                         </div>
                         <div class="row">
@@ -24,33 +25,43 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>User ID</label>
+                                <label>Reservation ID</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="userIDTextBox" runat="server" placeholder="User ID"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="resvIDTextBox" runat="server" placeholder="Reservation ID"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label>User Name</label>
+                                <label>Field ID</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="userNameTextBox" runat="server" placeholder="User Name"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="resvFieldIDTextBox" runat="server" placeholder="Field ID"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>User Role</label>
+                                <label>User ID</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="userRoleTextBox" runat="server" placeholder="User Role"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="resvUserIDTextBox" runat="server" placeholder="User ID"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
-                                <label>User Password</label>
+                                <label>Start Date</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="userPasswordTextBox" runat="server" placeholder="User Password"></asp:TextBox>
+                                    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Time"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>End Date</label>
+                                <div class="form-group">
+                                    <asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
+                                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Time"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -78,9 +89,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <center>
-                           <h4>Users</h4>
-                        </center>
+                                <h4 class="text-center">Fields</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -90,7 +99,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="usersTable" runat="server"></asp:GridView>
+                                <asp:GridView class="table table-striped table-bordered" ID="fieldsTable" runat="server"></asp:GridView>
                             </div>
                         </div>
                     </div>
