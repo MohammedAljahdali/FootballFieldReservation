@@ -10,7 +10,15 @@ namespace FootballFieldReservation
 {
     public class GlobalVar
     {
-        public static SqlConnection connection; // = new SqlConnection("test");
+
+        public static SqlConnection connection = new SqlConnection(
+            File.OpenText(
+                (AppDomain.CurrentDomain.BaseDirectory.ToString())
+                .Substring(0,
+                AppDomain.CurrentDomain.BaseDirectory.ToString().Length -
+                "FootballFieldReservation".Length - 1) + "ignore/" + "conn.txt").ReadToEnd());
+
+        // = new SqlConnection("test");
         /// <summary>
         /// Shows a message based of type and message
         /// </summary>
