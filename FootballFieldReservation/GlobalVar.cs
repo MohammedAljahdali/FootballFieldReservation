@@ -35,4 +35,12 @@ namespace FootballFieldReservation
 
         }
     }
+
+    public enum WarningType
+    {
+        Success,
+        Info,
+        Warning,
+        Danger
+    }
 }
