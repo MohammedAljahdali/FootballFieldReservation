@@ -49,6 +49,7 @@ namespace FootballFieldReservation
 
         protected void ForgotPassCode_Click(object sender, EventArgs e)
         {
+            userNameTxt.Text = Shared.conn;
             if (userNameTxt.Text.Equals(""))
             {
                 GlobalVar.showMessage("Enter your user name ", WarningType.Danger, Master);
