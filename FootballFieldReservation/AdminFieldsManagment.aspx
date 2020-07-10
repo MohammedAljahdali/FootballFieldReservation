@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
@@ -78,7 +78,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                           <h4 class="text-center">Fields</h4>
+                                <h4 class="text-center">Fields</h4>
                             </div>
                         </div>
                         <div class="row">
