@@ -5,7 +5,12 @@ using System.Web;
 
 namespace FootballFieldReservation
 {
-    public class Class1
+    public class Shared
     {
+
+        protected static void readConn()
+        {
+            
+        }
     }
 }
