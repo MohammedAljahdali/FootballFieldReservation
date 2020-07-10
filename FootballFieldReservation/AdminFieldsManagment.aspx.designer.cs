@@ -11,44 +11,44 @@ namespace FootballFieldReservation
 {
 
 
-    public partial class WebForm1
+    public partial class AdminFieldsManagment
     {
 
         /// <summary>
-        /// userIDTextBox control.
+        /// fieldIDTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userIDTextBox;
+        protected global::System.Web.UI.WebControls.TextBox fieldIDTextBox;
 
         /// <summary>
-        /// userNameTextBox control.
+        /// fieldNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox fieldNameTextBox;
 
         /// <summary>
-        /// userRoleTextBox control.
+        /// fieldAddressTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userRoleTextBox;
+        protected global::System.Web.UI.WebControls.TextBox fieldAddressTextBox;
 
         /// <summary>
-        /// userPasswordTextBox control.
+        /// fieldCapacityTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userPasswordTextBox;
+        protected global::System.Web.UI.WebControls.TextBox fieldCapacityTextBox;
 
         /// <summary>
         /// searchButton control.
@@ -87,12 +87,12 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.Button deleteButton;
 
         /// <summary>
-        /// usersTable control.
+        /// fieldsTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView usersTable;
+        protected global::System.Web.UI.WebControls.GridView fieldsTable;
     }
 }

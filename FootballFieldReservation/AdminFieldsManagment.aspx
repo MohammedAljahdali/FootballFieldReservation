@@ -1,20 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FootballFieldReservationSite.Master" AutoEventWireup="true" CodeBehind="AdminUserMangament.aspx.cs" Inherits="FootballFieldReservation.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FootballFieldReservationSite.Master" AutoEventWireup="true" CodeBehind="AdminFieldsManagment.aspx.cs" Inherits="FootballFieldReservation.AdminFieldsManagment" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+        <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h4 class="text-center">User Mangament</h4>
+                                <h4 class="text-center">Fields Mangament</h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p class="text-center">Add, Update and Delete Users</p>
+                                <p class="text-center">Add, Update and Delete Fields</p>
                             </div>
                         </div>
                         <div class="row">
@@ -24,48 +24,48 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>User ID</label>
+                                <label>Field ID</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="userIDTextBox" runat="server" placeholder="User ID"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="fieldIDTextBox" runat="server" placeholder="Field ID"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label>User Name</label>
+                                <label>Field Name</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="userNameTextBox" runat="server" placeholder="User Name"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="fieldNameTextBox" runat="server" placeholder="Field Name"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>User Role</label>
+                                <label>Field Address</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="userRoleTextBox" runat="server" placeholder="User Role"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="fieldAddressTextBox" runat="server" placeholder="Field Address"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label>User Password</label>
+                                <label>Field Capacity</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="userPasswordTextBox" runat="server" placeholder="User Password"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="fieldCapacityTextBox" runat="server" placeholder="Field Capacity"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <asp:Button ID="Button1" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" />
+                                <asp:Button ID="searchButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" />
                             </div>
                             <div class="col-3">
-                                <asp:Button ID="Button2" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" />
+                                <asp:Button ID="addButton" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" />
                             </div>
                             <div class="col-3">
-                                <asp:Button ID="Button3" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
+                                <asp:Button ID="updateButton" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
                             </div>
                             <div class="col-3">
-                                <asp:Button ID="Button4" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" />
+                                <asp:Button ID="deleteButton" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" />
                             </div>
                         </div>
                     </div>
@@ -78,9 +78,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <center>
-                           <h4>Users</h4>
-                        </center>
+                           <h4 class="text-center">Fields</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -90,7 +88,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="usersTable" runat="server"></asp:GridView>
+                                <asp:GridView class="table table-striped table-bordered" ID="fieldsTable" runat="server"></asp:GridView>
                             </div>
                         </div>
                     </div>
