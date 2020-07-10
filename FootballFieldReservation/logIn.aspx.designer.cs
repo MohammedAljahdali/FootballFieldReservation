@@ -11,7 +11,7 @@ namespace FootballFieldReservation
 {
 
 
-    public partial class logIn
+    public partial class Login
     {
 
         /// <summary>
