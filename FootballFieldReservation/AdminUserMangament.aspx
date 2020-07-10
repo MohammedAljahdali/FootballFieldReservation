@@ -59,7 +59,7 @@
                                 <asp:Button ID="searchButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" />
                             </div>
                             <div class="col-3">
-                                <asp:Button ID="addButton" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" />
+                                <asp:Button ID="addButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Add" />
                             </div>
                             <div class="col-3">
                                 <asp:Button ID="updateButton" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
