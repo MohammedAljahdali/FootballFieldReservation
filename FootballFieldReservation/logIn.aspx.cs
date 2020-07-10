@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -49,7 +50,12 @@ namespace FootballFieldReservation
 
         protected void ForgotPassCode_Click(object sender, EventArgs e)
         {
-            userNameTxt.Text = Shared.conn;
+            System.Diagnostics.Debug.WriteLine(File.OpenText(
+                (AppDomain.CurrentDomain.BaseDirectory.ToString())
+                .Substring(0,
+                AppDomain.CurrentDomain.BaseDirectory.ToString().Length -
+                "FootballFieldReservation".Length - 1) + "ignore/" + "conn.txt").ReadToEnd());
+         
             if (userNameTxt.Text.Equals(""))
             {
                 GlobalVar.showMessage("Enter your user name ", WarningType.Danger, Master);
