@@ -1824,6 +1824,7 @@
     <Content Include="Resources\field1.jpg" />
     <Content Include="Signup.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="AdminUserMangament.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1867,6 +1868,7 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Shared.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1905,6 +1907,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUserMangament.aspx.cs">
+      <DependentUpon>AdminUserMangament.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUserMangament.aspx.designer.cs">
+      <DependentUpon>AdminUserMangament.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
