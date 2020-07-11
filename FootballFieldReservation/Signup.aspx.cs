@@ -18,49 +18,12 @@ namespace FootballFieldReservation
 
         protected void submitClicked(object sender, EventArgs e)
         {
-
-
-            int success = 0;
-            if (passwordInputField.Text != confirmPasswordInputField.Text)
+            
+           bool success = GlobalVar.addUser(passwordInputField, confirmPasswordInputField, idInputField, nameInputField, confirmPasswordValidation, true, Master);
+            if (success)
             {
-                confirmPasswordValidation.Text = "Passwords does not match";
-                confirmPasswordValidation.ForeColor = System.Drawing.Color.Red;
-                return;
+                Response.Redirect("Home.aspx");
             }
-
-            string register = "insert into [User] (user_id, user_name, user_password, user_role) values (@user_id,@user_name,@user_password,@user_role)";
-            SqlCommand registerUser = new SqlCommand(register, GlobalVar.connection);
-            registerUser.Parameters.AddWithValue("@user_id", idInputField.Text);
-            registerUser.Parameters.AddWithValue("@user_name", nameInputField.Text);
-            registerUser.Parameters.AddWithValue("@user_password", passwordInputField.Text);
-            registerUser.Parameters.AddWithValue("@user_role", "user");
-            try
-            {
-                registerUser.Connection.Open();
-                //executing the method of command object
-                // ExecuteNonQuery() method of command object is used for insert the record
-                success = registerUser.ExecuteNonQuery();
-
-                if (success == 1)
-                {
-                    Response.Redirect("Home.aspx");
-                }
-                else
-                {
-                    GlobalVar.showMessage("Signing Up Failed Try Again Please", WarningType.Warning, Master);
-                }
-
-            } // end of try
-            catch (Exception ex)
-            {
-                GlobalVar.showMessage(ex.Message, WarningType.Danger, Master);
-            }
-            finally
-            {
-                registerUser.Connection.Close();
-            }
-
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)

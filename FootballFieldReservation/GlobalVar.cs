@@ -71,6 +71,156 @@ namespace FootballFieldReservation
             }
         }
 
+        public static bool addUser(TextBox passwordInputField, TextBox confirmPasswordInputField, TextBox idInputField, TextBox nameInputField, Label confirmPasswordValidation, bool confirmPassword,MasterPage master)
+        {
+            int success = 0;
+            if (passwordInputField.Text != confirmPasswordInputField.Text && confirmPassword)
+            {
+                confirmPasswordValidation.Text = "Passwords does not match";
+                confirmPasswordValidation.ForeColor = System.Drawing.Color.Red;
+                return false;
+            }
+
+            string register = "insert into [User] (user_id, user_name, user_password, user_role) values (@user_id,@user_name,@user_password,@user_role)";
+            SqlCommand registerUser = new SqlCommand(register, GlobalVar.connection);
+            registerUser.Parameters.AddWithValue("@user_id", idInputField.Text);
+            registerUser.Parameters.AddWithValue("@user_name", nameInputField.Text);
+            registerUser.Parameters.AddWithValue("@user_password", passwordInputField.Text);
+            registerUser.Parameters.AddWithValue("@user_role", "user");
+            try
+            {
+                registerUser.Connection.Open();
+                //executing the method of command object
+                // ExecuteNonQuery() method of command object is used for insert the record
+                success = registerUser.ExecuteNonQuery();
+
+                if (success == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    GlobalVar.showMessage("Signing Up Failed Try Again Please", WarningType.Warning, master);
+                    return false;
+                }
+
+            } // end of try
+            catch (Exception ex)
+            {
+                GlobalVar.showMessage(ex.Message, WarningType.Danger, master);
+                return false;
+            }
+            finally
+            {
+                registerUser.Connection.Close();
+            }
+        }
+
+        public static void search(SqlCommand cmd, TextBox[] textBoxes, String[] columns, Control[] controls, MasterPage Master)
+        {
+
+            try
+            {
+                cmd.Connection.Open();
+                //executing the method of command object
+                SqlDataReader dr;
+                dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    int index = 0;
+                    foreach (TextBox textBox in textBoxes)
+                    {
+                        textBox.Text = dr[columns[index]].ToString();
+                        index++;
+                    }
+                    foreach (WebControl control in controls)
+                    {
+                        if (control is TextBox)
+                            control.Enabled = false;
+                        else
+                            control.Enabled = true;
+                    }
+                    GlobalVar.showMessage("Record Found", WarningType.Success, Master);
+                }
+                else
+                    GlobalVar.showMessage("Sorry Record Not Found", WarningType.Danger, Master);
+            } // end of try
+            catch (Exception ex)
+            {
+                GlobalVar.showMessage("error reading the database" + ex.Message, WarningType.Danger, Master);
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+
+        public static void updateDelete(SqlCommand cmd, TextBox[] textBoxesToClear, Control[] controls, MasterPage Master, String typeString)
+        {
+            int success = 0;
+            try
+            {
+                cmd.Connection.Open();
+                //executing the method of command object
+                success = cmd.ExecuteNonQuery();
+                if (success == 1)
+                {
+                    GlobalVar.showMessage("Record "+ typeString + " Successfully", WarningType.Success, Master);
+                    // to make the text box clear
+                    GlobalVar.clearFields(textBoxesToClear);
+                    foreach (WebControl control in controls)
+                    {
+                        if (control is TextBox)
+                            control.Enabled = true;
+                        else
+                            control.Enabled = false;
+                    }
+
+
+                }
+                else
+                {
+                    GlobalVar.showMessage("Record " + typeString + " Failed", WarningType.Danger, Master);
+                    // to make the text box clear
+                    GlobalVar.clearFields(textBoxesToClear);
+                    foreach (WebControl control in controls)
+                    {
+                        if (control is TextBox)
+                            control.Enabled = true;
+                        else
+                            control.Enabled = false;
+                    }
+                }
+
+            } // end of try
+            catch (Exception ex)
+            {
+                GlobalVar.showMessage("Record " + typeString + " Failed: " + ex.Message, WarningType.Danger, Master);
+                // to make the text box clear
+                GlobalVar.clearFields(textBoxesToClear);
+                foreach (WebControl control in controls)
+                {
+                    if (control is TextBox)
+                        control.Enabled = true;
+                    else
+                        control.Enabled = false;
+                }
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+
+
+        public static void clearFields(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Text = "";
+            }
+        }
+
     }
 
     public enum WarningType

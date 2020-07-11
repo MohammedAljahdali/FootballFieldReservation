@@ -76,9 +76,6 @@ namespace FootballFieldReservation
 
         protected void updateButton_Click(object sender, EventArgs e)
         {
-            int success = 0;
-
-
             string updatesql = "update [User] set user_name=@name,user_id=@id,user_role=@role, user_password=@password where user_id=@id";
             SqlCommand cmd = new SqlCommand(updatesql, GlobalVar.connection);
             cmd.Parameters.AddWithValue("@id", int.Parse(userIDTextBox.Text));
@@ -86,11 +83,12 @@ namespace FootballFieldReservation
             cmd.Parameters.AddWithValue("@role", userRoleTextBox.Text);
             cmd.Parameters.AddWithValue("@password", userPasswordTextBox.Text);
             TextBox[] textBoxesToClear = new TextBox[] { userIDTextBox, userNameTextBox, userRoleTextBox, userPasswordTextBox };
-            GlobalVar.update(
+            GlobalVar.updateDelete(
                 cmd,
                 textBoxesToClear,
                 new Control[] { updateButton, deleteButton, userIDTextBox },
-                Master
+                Master,
+                "update"
                 );
             try
             {
@@ -131,6 +129,21 @@ namespace FootballFieldReservation
             {
                // cmd.Connection.Close();
             }
+        }
+
+        protected void deleteButton_Click(object sender, EventArgs e)
+        {
+            string delsql = "delete from [User] where user_id=@id";
+            SqlCommand cmd = new SqlCommand(delsql, GlobalVar.connection);
+            cmd.Parameters.AddWithValue("@id", int.Parse(userIDTextBox.Text));
+            TextBox[] textBoxesToClear = new TextBox[] { userIDTextBox, userNameTextBox, userRoleTextBox, userPasswordTextBox };
+            GlobalVar.updateDelete(
+                cmd,
+                textBoxesToClear,
+                new Control[] { updateButton, deleteButton, userIDTextBox },
+                Master,
+                "delete"
+                );
         }
     }
 }

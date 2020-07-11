@@ -56,16 +56,16 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <asp:Button ID="searchButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" />
+                                <asp:Button ID="searchButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" OnClick="searchButton_Click" />
                             </div>
                             <div class="col-3">
-                                <asp:Button ID="addButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Add" />
+                                <asp:Button ID="addButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Add" OnClick="addButton_Click" />
                             </div>
                             <div class="col-3">
-                                <asp:Button ID="updateButton" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
+                                <asp:Button ID="updateButton" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" OnClick="updateButton_Click" />
                             </div>
                             <div class="col-3">
-                                <asp:Button ID="deleteButton" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" />
+                                <asp:Button ID="deleteButton" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" OnClick="deleteButton_Click" />
                             </div>
                         </div>
                     </div>
