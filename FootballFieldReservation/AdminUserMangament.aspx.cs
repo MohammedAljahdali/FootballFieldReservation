@@ -28,37 +28,49 @@ namespace FootballFieldReservation
             SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
             // Mapping Parameter
             cmd.Parameters.AddWithValue("@id", userIDTextBox.Text);
+            GlobalVar.search(
+                cmd,
+                new TextBox[] { userNameTextBox, userPasswordTextBox, userRoleTextBox },
+                new string[] { "user_name", "user_password", "user_role" },
+                new Control[] { userIDTextBox, updateButton, deleteButton },
+                Master
+                );
+
             try
             {
-                cmd.Connection.Open();
-                //executing the method of command object
-                SqlDataReader dr;
-                dr = cmd.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    userNameTextBox.Text = dr["user_name"].ToString();
-                    userPasswordTextBox.Text = dr["user_password"].ToString();
-                    userRoleTextBox.Text = dr["user_role"].ToString();
-
-                    //passwordTextBox1.Text = dr["emp_password"].ToString();
-                    userIDTextBox.Enabled = false;
-                    updateButton.Enabled = true;
-                    deleteButton.Enabled = true;
-                    GlobalVar.showMessage("Record Found", WarningType.Success, Master);
-                }
-                else
-                    GlobalVar.showMessage("Sorry Record Not Found", WarningType.Danger, Master);
-                
-
-
-            } // end of try
-            catch (Exception ex)
-            {
-                GlobalVar.showMessage("error reading the database" + ex.Message, WarningType.Danger, Master);
+                //    cmd.Connection.Open();
+                //    //executing the method of command object
+                //    SqlDataReader dr;
+                //    dr = cmd.ExecuteReader();
+                //    if (dr.HasRows)
+                //    {
+                //        userNameTextBox.Text = dr["user_name"].ToString();
+                //        userPasswordTextBox.Text = dr["user_password"].ToString();
+                //        userRoleTextBox.Text = dr["user_role"].ToString();
+                //
+                //        //passwordTextBox1.Text = dr["emp_password"].ToString();
+                //        userIDTextBox.Enabled = false;
+                //        updateButton.Enabled = true;
+                //        deleteButton.Enabled = true;
+                //        GlobalVar.showMessage("Record Found", WarningType.Success, Master);
+                //    }
+                //    else
+                //        GlobalVar.showMessage("Sorry Record Not Found", WarningType.Danger, Master);
+                //    
+                //
+                //
+                //} // end of try
+                //catch (Exception ex)
+                //{
+                //    GlobalVar.showMessage("error reading the database" + ex.Message, WarningType.Danger, Master);
+                //}
+                //finally
+                //{
+                //    cmd.Connection.Close();
             }
-            finally
+
+            catch
             {
-                cmd.Connection.Close();
             }
         }
 
