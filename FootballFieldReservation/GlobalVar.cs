@@ -235,6 +235,13 @@ namespace FootballFieldReservation
                 textBox.Text = "";
             }
         }
+        public static void headerChanger(string [] colName,GridView grid)
+        {
+            for(int i =0; i < colName.Length; i++)
+            {
+                grid.HeaderRow.Cells[i].Text = colName[i];
+            }
+        }
 
     }
 

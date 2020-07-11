@@ -18,10 +18,14 @@ namespace FootballFieldReservation
             SqlCommand cmd = new SqlCommand("select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv Where [resv_user_id]='1855415'", GlobalVar.connection);
             try
             {
+                cmd.Connection.Close();
                 cmd.Connection.Open();
-                resvTable.DataSource = cmd.ExecuteReader();
+                resvTable.DataSource=cmd.ExecuteReader();
+
                 resvTable.DataBind();
-            }catch(SqlException ex)
+                GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
+            }
+            catch(SqlException ex)
             {
                 cmd.Connection.Close();
                 GlobalVar.showMessage("Sorry we are unable to connect you to the reservation table\t d-:" + ex.StackTrace, WarningType.Danger, Master);
@@ -41,14 +45,6 @@ namespace FootballFieldReservation
         protected void deleteB_Click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void resvTable_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
-                e.Row.Cells[0].Text = "Haha";
-            }
         }
     }
 }

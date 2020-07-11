@@ -90,7 +90,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="resvTable"  runat="server" AutoGenerateColumns="False" OnRowDataBound="resvTable_RowDataBound">
+                                <asp:GridView class="table table-striped table-bordered" ID="resvTable"  runat="server"  >
                                 </asp:GridView>
                             </div>
                         </div>
