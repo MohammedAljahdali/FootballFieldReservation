@@ -41,21 +41,20 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="Home.aspx">Home<span class="sr-only">(current)</span></a>
+                            <asp:LinkButton ID="homeLinkButton" CssClass="nav-link" runat="server" PostBackUrl="Home.aspx">Home</asp:LinkButton>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reservations</a>
+                             <asp:LinkButton ID="resvLinkButton" CssClass="nav-link" runat="server" PostBackUrl="#">Reservations</asp:LinkButton>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Manage Your Reservations</a>
+                            <asp:LinkButton ID="userPageLinkButton" CssClass="nav-link" runat="server" PostBackUrl="user.aspx">Manage Your Reservations</asp:LinkButton>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Login.aspx">Login</a>
+                            <asp:LinkButton ID="loginLinkButton" CssClass="nav-link" runat="server" PostBackUrl="Login.aspx">Login</asp:LinkButton>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" tabindex="-1">Logout</a>
+                            <asp:LinkButton ID="logoutLinkButton" CssClass="nav-link" runat="server" OnClientClick="logoutClicked" tabindex="-1">Logout</asp:LinkButton>
                         </li>
-
                     </ul>
                 </div>
             </nav>
