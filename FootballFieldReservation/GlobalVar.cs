@@ -71,9 +71,41 @@ namespace FootballFieldReservation
             }
         }
 
-        public static bool addUser(TextBox passwordInputField, TextBox confirmPasswordInputField, TextBox idInputField, TextBox nameInputField, Label confirmPasswordValidation, bool confirmPassword,MasterPage master)
+        public static bool add(SqlCommand cmd, String successMessage, String failMessage, MasterPage master)
         {
             int success = 0;
+            try
+            {
+                cmd.Connection.Open();
+                //executing the method of command object
+                // ExecuteNonQuery() method of command object is used for insert the record
+                success = cmd.ExecuteNonQuery();
+
+                if (success == 1)
+                {
+                    GlobalVar.showMessage(successMessage, WarningType.Success, master);
+                    return true;
+                }
+                else
+                {
+                    GlobalVar.showMessage(failMessage, WarningType.Warning, master);
+                    return false;
+                }
+
+            } // end of try
+            catch (Exception ex)
+            {
+                GlobalVar.showMessage(failMessage+": "+ex.Message, WarningType.Danger, master);
+                return false;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+
+        public static bool addUser(TextBox passwordInputField, TextBox confirmPasswordInputField, TextBox idInputField, TextBox nameInputField, Label confirmPasswordValidation, bool confirmPassword,MasterPage master)
+        {
             if (passwordInputField.Text != confirmPasswordInputField.Text && confirmPassword)
             {
                 confirmPasswordValidation.Text = "Passwords does not match";
@@ -82,38 +114,12 @@ namespace FootballFieldReservation
             }
 
             string register = "insert into [User] (user_id, user_name, user_password, user_role) values (@user_id,@user_name,@user_password,@user_role)";
-            SqlCommand registerUser = new SqlCommand(register, GlobalVar.connection);
-            registerUser.Parameters.AddWithValue("@user_id", idInputField.Text);
-            registerUser.Parameters.AddWithValue("@user_name", nameInputField.Text);
-            registerUser.Parameters.AddWithValue("@user_password", passwordInputField.Text);
-            registerUser.Parameters.AddWithValue("@user_role", "user");
-            try
-            {
-                registerUser.Connection.Open();
-                //executing the method of command object
-                // ExecuteNonQuery() method of command object is used for insert the record
-                success = registerUser.ExecuteNonQuery();
-
-                if (success == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    GlobalVar.showMessage("Signing Up Failed Try Again Please", WarningType.Warning, master);
-                    return false;
-                }
-
-            } // end of try
-            catch (Exception ex)
-            {
-                GlobalVar.showMessage(ex.Message, WarningType.Danger, master);
-                return false;
-            }
-            finally
-            {
-                registerUser.Connection.Close();
-            }
+            SqlCommand cmd = new SqlCommand(register, GlobalVar.connection);
+            cmd.Parameters.AddWithValue("@user_id", idInputField.Text);
+            cmd.Parameters.AddWithValue("@user_name", nameInputField.Text);
+            cmd.Parameters.AddWithValue("@user_password", passwordInputField.Text);
+            cmd.Parameters.AddWithValue("@user_role", "user");
+            return add(cmd,"Signing Up Successed", "Signing Up Failed Try Again Please", master);
         }
 
         public static void search(SqlCommand cmd, TextBox[] textBoxes, String[] columns, Control[] controls, MasterPage Master)
