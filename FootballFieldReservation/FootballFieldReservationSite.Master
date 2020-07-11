@@ -53,7 +53,7 @@
                             <asp:LinkButton ID="loginLinkButton" CssClass="nav-link" runat="server" PostBackUrl="Login.aspx">Login</asp:LinkButton>
                         </li>
                         <li class="nav-item">
-                            <asp:LinkButton ID="logoutLinkButton" CssClass="nav-link" runat="server" OnClientClick="logoutClicked" tabindex="-1">Logout</asp:LinkButton>
+                            <asp:LinkButton ID="logoutLinkButton" CssClass="nav-link" runat="server" tabindex="-1" OnClick="logoutLinkButton_Click">Logout</asp:LinkButton>
                         </li>
                     </ul>
                 </div>

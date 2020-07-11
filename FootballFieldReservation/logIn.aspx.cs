@@ -19,33 +19,40 @@ namespace FootballFieldReservation
 
         protected void loginButton_Click(object sender, EventArgs e)
         {
-        //      SqlCommand command = new SqlCommand("select * from **** where [Email/User Name]='" +userNameTxt.Text+ "' and Password='" +passwordTxt.Text+ "'", GlobalVar.connection);
-        //    try
-        //    {
-        //        command.Connection.Open();
-        //        SqlDataReader reader = command.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-                   
-        //            //go to home page 
-        //        }
-        //        else
-        //        {
-        //            GlobalVar.showMessage("your password or username is incorrect !", WarningType.Danger, Master);
-        //            return;
-        //        }
+            SqlCommand command = new SqlCommand("select * from [User] where [user_id]='" + userNameTxt.Text + "' and user_password='" + passwordTxt.Text + "'", GlobalVar.connection);
+            try
+            {
+                command.Connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                  //  set user id to GlobalVar.userID
+                    GlobalVar.userID = reader["user_id"].ToString();
+                    GlobalVar.userRole = reader["user_role"].ToString();
+                    (Master as Site1).changeUserStatus();
+                    Response.Redirect("Home.aspx");
+                }
+                else
+                {
+                    GlobalVar.showMessage("your password or username is incorrect !", WarningType.Danger, Master);
+                    return;
+                }
 
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        GlobalVar.showMessage("Sorry the server could not be contacted\n" + ex.Message, WarningType.Danger, Master);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        GlobalVar.showMessage("Unknown error ... \n" + ex.Message, WarningType.Danger, Master);
-        //    }
+            }
+            catch (SqlException ex)
+            {
+                GlobalVar.showMessage("Sorry the server could not be contacted\n" + ex.Message, WarningType.Danger, Master);
+            }
+            catch (Exception ex)
+            {
+                GlobalVar.showMessage("Unknown error ... \n" + ex.Message, WarningType.Danger, Master);
+            }
 
-        //    command.Connection.Close();
+            command.Connection.Close();
+
+
+
+
         }
 
         protected void ForgotPassCode_Click(object sender, EventArgs e)

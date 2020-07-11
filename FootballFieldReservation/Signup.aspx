@@ -36,7 +36,6 @@
                     </div>
                 </div>
                 <asp:button id="submitButton" runat="server" OnClick="submitClicked" CssClass="btnSubmit btn-block" Text="Submit" ValidateRequestMode="Enabled" ValidationGroup="1"/>
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="test alert" />
             </div>
         </div>
     </div>

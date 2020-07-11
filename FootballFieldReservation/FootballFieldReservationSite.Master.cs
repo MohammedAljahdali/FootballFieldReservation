@@ -16,11 +16,6 @@ namespace FootballFieldReservation
             changeUserStatus();
         }
 
-        protected void logoutClicked(object sender, EventArgs e)
-        {
-            changeUserStatus();
-        }
-
         public void changeUserStatus()
         {
             LinkButton[] adminLinkButtons = new LinkButton[] { adminFieldLink, adminUserLink, adminReservationLink };
@@ -37,6 +32,8 @@ namespace FootballFieldReservation
                     userPageLinkButton.Enabled = true;
                     adminLoginLink.Enabled = false;
                     loginLinkButton.Enabled = false;
+                    foreach (LinkButton link in adminLinkButtons)
+                        link.Enabled = false;
                     break;
                 case "admin":
                     foreach (LinkButton link in adminLinkButtons)
@@ -48,6 +45,14 @@ namespace FootballFieldReservation
                 default:
                     break;
             }
+        }
+
+        protected void logoutLinkButton_Click(object sender, EventArgs e)
+        {
+            GlobalVar.userID = "";
+            GlobalVar.userRole = "";
+            Response.Redirect("Login.aspx");
+            changeUserStatus();
         }
     }
 }

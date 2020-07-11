@@ -12,6 +12,7 @@ namespace FootballFieldReservation
     public static class GlobalVar
     {
         public static string userRole = "";
+        public static string userID = "";
         public static SqlConnection connection = new SqlConnection(
             File.OpenText(
                 (AppDomain.CurrentDomain.BaseDirectory.ToString())
