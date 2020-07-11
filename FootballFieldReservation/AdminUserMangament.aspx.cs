@@ -20,14 +20,17 @@ namespace FootballFieldReservation
         protected void addButton_Click(object sender, EventArgs e)
         {
             GlobalVar.addUser(userPasswordTextBox, null, userIDTextBox, userNameTextBox, null, false, Master);
+            GlobalVar.displayUsers(usersTable, Master);
+            GlobalVar.clearFields(new TextBox[] { userNameTextBox, userIDTextBox, userRoleTextBox, userPasswordTextBox });
         }
 
         protected void searchButton_Click(object sender, EventArgs e)
         {
-            string srchsql = "select * from [User] where user_id=@id";
+            string srchsql = "select * from [User] where user_id = @id";
             SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
             // Mapping Parameter
-            cmd.Parameters.AddWithValue("@id", userIDTextBox.Text);
+            cmd.Parameters.AddWithValue("@id", int.Parse(userIDTextBox.Text));
+            System.Diagnostics.Debug.WriteLine(userIDTextBox.Text);
             GlobalVar.search(
                 cmd,
                 new TextBox[] { userNameTextBox, userPasswordTextBox, userRoleTextBox },
@@ -35,6 +38,7 @@ namespace FootballFieldReservation
                 new Control[] { userIDTextBox, updateButton, deleteButton },
                 Master
                 );
+            GlobalVar.displayUsers(usersTable, Master);
 
             try
             {
@@ -90,6 +94,7 @@ namespace FootballFieldReservation
                 Master,
                 "update"
                 );
+            GlobalVar.displayUsers(usersTable, Master);
             try
             {
             //   cmd.Connection.Open();
@@ -144,6 +149,7 @@ namespace FootballFieldReservation
                 Master,
                 "delete"
                 );
+            GlobalVar.displayUsers(usersTable, Master);
         }
     }
 }
