@@ -61,5 +61,59 @@ namespace FootballFieldReservation
                 cmd.Connection.Close();
             }
         }
+
+        protected void updateButton_Click(object sender, EventArgs e)
+        {
+            int success = 0;
+
+
+            string updatesql = "update Employee set emp_name=@emp_name,emp_id=@emp_id,emp_dept=@emp_dept," +
+                "emp_role=@emp_role,emp_address=@emp_address,emp_desig=@emp_designation," +
+                "emp_email=@emp_email,emp_mobile=@emp_mobile,emp_password=@emp_password where emp_id=@emp_id";
+            SqlCommand cmdupdate = new SqlCommand(updatesql, GlobalVar.connection);
+            cmdupdate.Parameters.AddWithValue("@id", int.Parse(userIDTextBox.Text));
+            cmdupdate.Parameters.AddWithValue("@name", userNameTextBox.Text);
+            cmdupdate.Parameters.AddWithValue("@role", userRoleTextBox.Text);
+            cmdupdate.Parameters.AddWithValue("@password", userPasswordTextBox.Text);
+            try
+            {
+                cmdupdate.Connection.Open();
+                //executing the method of command object
+                success = cmdupdate.ExecuteNonQuery();
+                if (success == 1)
+                {
+                    GlobalVar.showMessage("Record updated Successfully", WarningType.Success, Master);
+                    // to make the text box clear
+                    clearFields();
+                    updateButton.Enabled = false;
+                    deleteButton.Enabled = false;
+                    userIDTextBox.Enabled = true;
+
+                }
+                else
+                {
+                    GlobalVar.showMessage("Record update Failed", WarningType.Danger, Master);
+                    // to make the text box clear
+                    clearFields();
+                    updateButton.Enabled = false;
+                    deleteButton.Enabled = false;
+                    userIDTextBox.Enabled = true;
+                }
+                    
+            } // end of try
+            catch (Exception ex)
+            {
+                GlobalVar.showMessage("Record update Failed: "+ex.Message, WarningType.Danger, Master);
+                // to make the text box clear
+                GlobalVar.clearFields();
+                updateButton.Enabled = false;
+                deleteButton.Enabled = false;
+                userIDTextBox.Enabled = true;
+            }
+            finally
+            {
+                cmdupdate.Connection.Close();
+            }
+        }
     }
 }
