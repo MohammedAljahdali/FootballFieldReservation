@@ -9,12 +9,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h4 class="text-center">Welcome Back +</h4>
+                                <h4 class="text-center">Welcome Back 
+                                    <asp:Label ID="Label1" runat="server" Text="userName"></asp:Label>
+                                </h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p class="text-center">Edit your profile</p>
+                                <p class="text-center">Edit your Reservations</p>
                             </div>
                         </div>
                         <div class="row">
@@ -88,7 +90,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="resvTable" runat="server" AutoGenerateColumns="False">
+                                <asp:GridView class="table table-striped table-bordered" ID="resvTable"  runat="server" AutoGenerateColumns="False" OnRowDataBound="resvTable_RowDataBound">
                                 </asp:GridView>
                             </div>
                         </div>

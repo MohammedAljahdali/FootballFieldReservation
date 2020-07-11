@@ -27,8 +27,9 @@ namespace FootballFieldReservation
                 if (reader.Read())
                 {
                   //  set user id to GlobalVar.userID
-                    GlobalVar.userID = reader["user_id"].ToString();
+                    GlobalVar.userID =   reader["user_id"].ToString();
                     GlobalVar.userRole = reader["user_role"].ToString();
+                    GlobalVar.userName = reader["user_name"].ToString();
                     (Master as Site1).changeUserStatus();
                     Response.Redirect("Home.aspx");
                 }
@@ -57,11 +58,6 @@ namespace FootballFieldReservation
 
         protected void ForgotPassCode_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(File.OpenText(
-                (AppDomain.CurrentDomain.BaseDirectory.ToString())
-                .Substring(0,
-                AppDomain.CurrentDomain.BaseDirectory.ToString().Length -
-                "FootballFieldReservation".Length - 1) + "ignore/" + "conn.txt").ReadToEnd());
             if (userNameTxt.Text.Equals(""))
             {
                 GlobalVar.showMessage("Enter your user name ", WarningType.Danger, Master);

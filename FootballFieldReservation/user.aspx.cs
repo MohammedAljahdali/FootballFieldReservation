@@ -14,43 +14,41 @@ namespace FootballFieldReservation
         static bool once = true;
         protected void Page_Load(object sender, EventArgs e)
         {
-            userIdTextBox.Text = "1855415";
+            Label1.Text = GlobalVar.userName;
+            SqlCommand cmd = new SqlCommand("select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv Where [resv_user_id]='1855415'", GlobalVar.connection);
             try
-               // select[resv_id] , resv_field_id , resv_startDate , resv_endDate from Resv Where resv_user_id = '" +
             {
-               // select[resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From[Lap - Project].[dbo].[Resv] Where[resv_user_id] = '1855415'
-                GlobalVar.connection.Open();
-                resvTable.DataSource = new SqlCommand("select[resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From [Resv] Where[resv_user_id] ='" +
-                    userIdTextBox.Text + "'", GlobalVar.connection).ExecuteReader();
+                cmd.Connection.Open();
+                resvTable.DataSource = cmd.ExecuteReader();
                 resvTable.DataBind();
             }catch(SqlException ex)
             {
-                GlobalVar.showMessage("Sorry we are unable to connect you to the reservation table\t d-:" + ex.Message, WarningType.Danger, Master);
-            }
-            catch(Exception ex)
+                cmd.Connection.Close();
+                GlobalVar.showMessage("Sorry we are unable to connect you to the reservation table\t d-:" + ex.StackTrace, WarningType.Danger, Master);
+            }catch(Exception ex)
             {
-                GlobalVar.showMessage("Sorry we are unable to connect you to the reservation table\t d-:"+ex.Message, WarningType.Danger, Master);
+                GlobalVar.showMessage("Sorry we are unable to connect you to the reservation table :" + ex.StackTrace, WarningType.Danger, Master);
             }
+            cmd.Connection.Close();
             userIdTextBox.Enabled = false;
         }
 
         protected void updateB_Click(object sender, EventArgs e)
         {
-            if (!userPasswordText.Text.Equals(userConfiemPasswordTextBox.Text))
-            {
-                GlobalVar.showMessage("your passwrods does not match , Try again ..", WarningType.Danger, Master);
-                return;
-            }
-            GlobalVar.updateDelete(new SqlCommand("update User set user_name='"
-                + userNameTextBox.Text + "' , user_password='" + userPasswordText.Text + "'",GlobalVar.connection),
-                new TextBox[] { userPasswordText, userConfiemPasswordTextBox }
-                , new Control[] { userNameTextBox}, Master, "update");
+
         }
        
         protected void deleteB_Click(object sender, EventArgs e)
         {
-     GlobalVar.updateDelete(new SqlCommand("delete from User where user_id='" + userIdTextBox.Text + "'", GlobalVar.connection)
-    , new TextBox[0], new Control[0], Master, "delete");
+
+        }
+
+        protected void resvTable_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[0].Text = "Haha";
+            }
         }
     }
 }

@@ -13,8 +13,9 @@ namespace FootballFieldReservation
     {
         public static string userRole = "";
         public static string userID = "";
+        public static string userName = "";
         public static SqlConnection connection = new SqlConnection(
-            File.OpenText(
+                 File.OpenText(
                 (AppDomain.CurrentDomain.BaseDirectory.ToString())
                 .Substring(0,
                 AppDomain.CurrentDomain.BaseDirectory.ToString().Length -
