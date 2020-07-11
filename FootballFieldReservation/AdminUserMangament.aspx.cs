@@ -67,9 +67,7 @@ namespace FootballFieldReservation
             int success = 0;
 
 
-            string updatesql = "update Employee set emp_name=@emp_name,emp_id=@emp_id,emp_dept=@emp_dept," +
-                "emp_role=@emp_role,emp_address=@emp_address,emp_desig=@emp_designation," +
-                "emp_email=@emp_email,emp_mobile=@emp_mobile,emp_password=@emp_password where emp_id=@emp_id";
+            string updatesql = "update [User] set user_name=@name,user_id=@id,user_role=@role, user_password=@password where user_id=@id";
             SqlCommand cmdupdate = new SqlCommand(updatesql, GlobalVar.connection);
             cmdupdate.Parameters.AddWithValue("@id", int.Parse(userIDTextBox.Text));
             cmdupdate.Parameters.AddWithValue("@name", userNameTextBox.Text);
@@ -84,7 +82,7 @@ namespace FootballFieldReservation
                 {
                     GlobalVar.showMessage("Record updated Successfully", WarningType.Success, Master);
                     // to make the text box clear
-                    clearFields();
+                    GlobalVar.clearFields(new TextBox[] { userIDTextBox, userNameTextBox, userRoleTextBox, userPasswordTextBox});
                     updateButton.Enabled = false;
                     deleteButton.Enabled = false;
                     userIDTextBox.Enabled = true;
@@ -94,7 +92,7 @@ namespace FootballFieldReservation
                 {
                     GlobalVar.showMessage("Record update Failed", WarningType.Danger, Master);
                     // to make the text box clear
-                    clearFields();
+                    GlobalVar.clearFields(new TextBox[] {userIDTextBox,  userNameTextBox, userRoleTextBox, userPasswordTextBox});
                     updateButton.Enabled = false;
                     deleteButton.Enabled = false;
                     userIDTextBox.Enabled = true;
@@ -105,7 +103,7 @@ namespace FootballFieldReservation
             {
                 GlobalVar.showMessage("Record update Failed: "+ex.Message, WarningType.Danger, Master);
                 // to make the text box clear
-                GlobalVar.clearFields();
+                GlobalVar.clearFields(new TextBox[] { userIDTextBox, userNameTextBox, userRoleTextBox, userPasswordTextBox});
                 updateButton.Enabled = false;
                 deleteButton.Enabled = false;
                 userIDTextBox.Enabled = true;
