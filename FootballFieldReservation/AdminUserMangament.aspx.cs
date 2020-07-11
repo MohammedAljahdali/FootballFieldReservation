@@ -30,7 +30,7 @@ namespace FootballFieldReservation
             SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
             // Mapping Parameter
             cmd.Parameters.AddWithValue("@id", int.Parse(userIDTextBox.Text));
-            System.Diagnostics.Debug.WriteLine(userIDTextBox.Text);
+            // System.Diagnostics.Debug.WriteLine(userIDTextBox.Text);
             GlobalVar.search(
                 cmd,
                 new TextBox[] { userNameTextBox, userPasswordTextBox, userRoleTextBox },
