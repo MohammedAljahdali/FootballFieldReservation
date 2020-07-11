@@ -56,7 +56,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <asp:Button ID="searchButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" />
+                                <asp:Button ID="searchButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" OnClick="searchButton_Click" />
                             </div>
                             <div class="col-3">
                                 <asp:Button ID="addButton" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" />

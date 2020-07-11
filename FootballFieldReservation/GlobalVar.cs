@@ -41,12 +41,12 @@ namespace FootballFieldReservation
             panelMessage.Visible = true;
         }
 
-        public static void displayUsers(GridView gridView, MasterPage master)
+        public static void display(GridView gridView, MasterPage master, string sql)
         {
             // Create SQlStatement
-            string selsql = "select * from [User]";
+            
             //create command object
-            SqlCommand cmd = new SqlCommand(selsql, connection);
+            SqlCommand cmd = new SqlCommand(sql, connection);
             try
             { // open the connection
                 cmd.Connection.Open();

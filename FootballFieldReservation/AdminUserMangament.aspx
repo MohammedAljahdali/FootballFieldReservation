@@ -1,18 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FootballFieldReservationSite.Master" AutoEventWireup="true" CodeBehind="AdminUserMangament.aspx.cs" Inherits="FootballFieldReservation.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .auto-style1 {
-            position: relative;
-            width: 100%;
-            -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
-            max-width: 25%;
-            left: 0px;
-            top: -426px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-    </style>
+    .auto-style1 {
+        position: relative;
+        width: 100%;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+        left: 0px;
+        top: -426px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">

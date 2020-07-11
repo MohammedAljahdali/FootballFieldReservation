@@ -12,7 +12,7 @@ namespace FootballFieldReservation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GlobalVar.displayUsers(usersTable, Master);
+            GlobalVar.display(usersTable, Master,"select * from [User]");
             updateButton.Enabled = false;
             deleteButton.Enabled = false;
         }
@@ -20,7 +20,7 @@ namespace FootballFieldReservation
         protected void addButton_Click(object sender, EventArgs e)
         {
             GlobalVar.addUser(userPasswordTextBox, null, userIDTextBox, userNameTextBox, null, false, Master);
-            GlobalVar.displayUsers(usersTable, Master);
+            GlobalVar.display(usersTable, Master, "select * from [User]");
             GlobalVar.clearFields(new TextBox[] { userNameTextBox, userIDTextBox, userRoleTextBox, userPasswordTextBox });
         }
 
@@ -38,7 +38,7 @@ namespace FootballFieldReservation
                 new Control[] { userIDTextBox, updateButton, deleteButton },
                 Master
                 );
-            GlobalVar.displayUsers(usersTable, Master);
+            GlobalVar.display(usersTable, Master, "select * from [User]");
 
             try
             {
@@ -94,7 +94,7 @@ namespace FootballFieldReservation
                 Master,
                 "update"
                 );
-            GlobalVar.displayUsers(usersTable, Master);
+            GlobalVar.display(usersTable, Master, "select * from [User]");
             try
             {
             //   cmd.Connection.Open();
@@ -149,7 +149,7 @@ namespace FootballFieldReservation
                 Master,
                 "delete"
                 );
-            GlobalVar.displayUsers(usersTable, Master);
+            GlobalVar.display(usersTable, Master, "select * from [User]");
         }
     }
 }
