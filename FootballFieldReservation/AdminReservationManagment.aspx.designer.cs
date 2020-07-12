@@ -42,40 +42,49 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.TextBox resvUserIDTextBox;
 
         /// <summary>
-        /// Calendar1 control.
+        /// startCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.WebControls.Calendar startCalendar;
 
         /// <summary>
-        /// TextBox1 control.
+        /// startTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox startTextBox;
 
         /// <summary>
-        /// Calendar2 control.
+        /// endCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar2;
+        protected global::System.Web.UI.WebControls.Calendar endCalendar;
 
         /// <summary>
-        /// TextBox2 control.
+        /// endTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox endTextBox;
+
+        /// <summary>
+        /// dateVaildationLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label dateVaildationLabel;
 
         /// <summary>
         /// searchButton control.

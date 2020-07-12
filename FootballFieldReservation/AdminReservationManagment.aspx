@@ -27,9 +27,7 @@
                             <div class="col-md-6">
                                 <label>Reservation ID</label>
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="resvIDTextBox" runat="server" placeholder="Reservation ID"></asp:TextBox>
-                                    </div>
+                                     <asp:TextBox CssClass="form-control" ID="resvIDTextBox" runat="server" placeholder="Reservation ID"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -53,24 +51,27 @@
                             <div class="col-md-6">
                                 <label>Start Date</label>
                                 <div class="form-group">
-                                    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Time"></asp:TextBox>
+                                    <asp:Calendar ID="startCalendar" runat="server"></asp:Calendar>
+                                    <asp:TextBox ID="startTextBox" runat="server" TextMode="Time"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label>End Date</label>
                                 <div class="form-group">
-                                    <asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
-                                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Time"></asp:TextBox>
+                                    <asp:Calendar ID="endCalendar" runat="server"></asp:Calendar>
+                                    <asp:TextBox ID="endTextBox" runat="server" TextMode="Time"></asp:TextBox>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            <asp:Label ID="dateVaildationLabel" runat="server" Text=""></asp:Label>
                         </div>
                         <div class="row">
                             <div class="col-3">
                                 <asp:Button ID="searchButton" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" />
                             </div>
                             <div class="col-3">
-                                <asp:Button ID="addButton" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" />
+                                <asp:Button ID="addButton" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" OnClick="addButton_Click" />
                             </div>
                             <div class="col-3">
                                 <asp:Button ID="updateButton" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
