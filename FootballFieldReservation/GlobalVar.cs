@@ -241,6 +241,8 @@ namespace FootballFieldReservation
 
         public static void headerChanger(string [] colName,GridView grid)
         {
+            if (grid.Rows.Count==0)
+                return;
             for(int i =0; i < colName.Length; i++)
             {
                 grid.HeaderRow.Cells[i].Text = colName[i];
@@ -251,6 +253,7 @@ namespace FootballFieldReservation
         {
             TimeSpan timeSpan = endDate - startDate;
             TimeSpan startTimeSpan = startDate - DateTime.Now;
+            System.Diagnostics.Debug.WriteLine(timeSpan.TotalHours);
             if (startTimeSpan.TotalHours < 0)
             {
                 dateVaildationLabel.Text = "Please Enter a Correct Start Date";
@@ -278,6 +281,7 @@ namespace FootballFieldReservation
                 return false;
             } else if (timeSpan.TotalHours > 3) {
                 dateVaildationLabel.Text = "The Reservation Duration most be at most 3 hour!";
+                return false;
             }
             return true;
         }

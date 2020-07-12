@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -68,8 +69,8 @@ namespace FootballFieldReservation
                 );
             if (dr is null)
                 return;
-            startCalendar.SelectedDate = DateTime.Parse(dr["resv_startDate"].ToString());
-            endCalendar.SelectedDate = DateTime.Parse(dr["resv_endDate"].ToString());
+            startCalendar.SelectedDate =DateTime.Parse(((DateTime)dr["resv_startDate"]).ToShortDateString());
+            endCalendar.SelectedDate = DateTime.Parse(((DateTime)dr["resv_endDate"]).ToShortDateString());
             startTextBox.Text = DateTime.Parse(dr["resv_startDate"].ToString()).ToString("HH:mm:ss");
             endTextBox.Text = DateTime.Parse(dr["resv_endDate"].ToString()).ToString("HH:mm:ss");
             dateVaildationLabel.Text = "";

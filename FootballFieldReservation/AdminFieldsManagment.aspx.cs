@@ -46,6 +46,7 @@ namespace FootballFieldReservation
             GlobalVar.add(cmd, "Field added Successfully", "Field is Not Added, Try Again Please", Master);
             GlobalVar.display(fieldsTable, Master, "select * from [Field]");
             GlobalVar.clearFields(new TextBox[] { fieldNameTextBox, fieldAddressTextBox, fieldCapacityTextBox, fieldIDTextBox });
+            
         }
 
         protected void updateButton_Click(object sender, EventArgs e)
