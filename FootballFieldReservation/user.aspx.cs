@@ -10,11 +10,11 @@ namespace FootballFieldReservation
         static bool once = true;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
             Label1.Text = GlobalVar.userName;
 
             GlobalVar.display(resvTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate]" +
-                                                  " From Resv Where [resv_user_id]='"+GlobalVar.userID+"'");
+                                                  " From Resv Where [resv_user_id]='" + GlobalVar.userID + "'");
 
             GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
 
@@ -42,8 +42,8 @@ namespace FootballFieldReservation
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                     start = (DateTime)reader["resv_startDate"];
-                     end =   (DateTime) reader["resv_endDate"];
+                    start = (DateTime)reader["resv_startDate"];
+                    end = (DateTime)reader["resv_endDate"];
                 }
             }
             catch (SqlException ex)
@@ -59,16 +59,11 @@ namespace FootballFieldReservation
                 cmd.Connection.Close();
             }
 
-            string i = Calendar2.SelectedDate.ToString()+TextBox2.Text;
+            string i = Calendar2.SelectedDate.ToString() + TextBox2.Text;
             string j = Calendar1.SelectedDate.ToString() + TextBox1.Text;
             fieldIdTextBox.Text = start.ToString();
             fielNameTextBox.Text = i;
-
-
-
-        protected void addB_Click(object sender, EventArgs e)
-        {
-            if()
+            return false;
         }
     }
 }
