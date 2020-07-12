@@ -258,9 +258,11 @@ namespace FootballFieldReservation
                 return false;
                 //System.Diagnostics.Debug.WriteLine("hey");
             }
+            System.Diagnostics.Debug.WriteLine(DateTime.Compare(endDate, startDate));
             switch (DateTime.Compare(endDate, startDate))
             {
                 case 1:
+                    dateVaildationLabel.Text = "";
                     break;
                 case 0:
                     dateVaildationLabel.Text = "Start and End dates can not be the same!";
@@ -272,6 +274,7 @@ namespace FootballFieldReservation
             // check the is the resv time is at least 1 hour
             if (timeSpan.TotalHours < 1)
             {
+                System.Diagnostics.Debug.WriteLine(timeSpan.TotalHours);
                 dateVaildationLabel.Text = "The Reservation Duration most be at least 1 hour!";
                 return false;
             }
