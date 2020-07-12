@@ -277,6 +277,8 @@ namespace FootballFieldReservation
                 System.Diagnostics.Debug.WriteLine(timeSpan.TotalHours);
                 dateVaildationLabel.Text = "The Reservation Duration most be at least 1 hour!";
                 return false;
+            } else if (timeSpan.TotalHours > 3) {
+                dateVaildationLabel.Text = "The Reservation Duration most be at most 3 hour!";
             }
             return true;
         }

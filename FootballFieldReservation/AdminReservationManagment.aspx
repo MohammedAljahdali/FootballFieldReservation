@@ -52,7 +52,7 @@
                                 <label>Start Date</label>
                                 <div class="form-group">
                                     <asp:Calendar ID="startCalendar" runat="server"></asp:Calendar>
-                                    <asp:TextBox ID="startTextBox" runat="server" TextMode="Time" OnTextChanged="startTextBox_TextChanged"></asp:TextBox>
+                                    <asp:TextBox ID="startTextBox" runat="server" TextMode="Time"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -100,7 +100,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="fieldsTable" runat="server"></asp:GridView>
+                                <asp:GridView class="table table-striped table-bordered" ID="resvTable" runat="server"></asp:GridView>
                             </div>
                         </div>
                     </div>
