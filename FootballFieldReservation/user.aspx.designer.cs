@@ -24,6 +24,15 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
+        /// onlyNum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator onlyNum;
+
+        /// <summary>
         /// fieldIdTextBox control.
         /// </summary>
         /// <remarks>
@@ -42,22 +51,40 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.TextBox fielNameTextBox;
 
         /// <summary>
-        /// userStartDate control.
+        /// Calendar2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userStartDate;
+        protected global::System.Web.UI.WebControls.Calendar Calendar2;
 
         /// <summary>
-        /// userEndDateTextBox control.
+        /// TextBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userEndDateTextBox;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+
+        /// <summary>
+        /// Calendar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
         /// searchB control.

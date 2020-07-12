@@ -26,8 +26,8 @@ namespace FootballFieldReservation
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                  //  set user id to GlobalVar.userID
-                    GlobalVar.userID =   reader["user_id"].ToString();
+                    //  set user id to GlobalVar.userID
+                    GlobalVar.userID = reader["user_id"].ToString();
                     GlobalVar.userRole = reader["user_role"].ToString();
                     GlobalVar.userName = reader["user_name"].ToString();
                     (Master as Site1).changeUserStatus();
@@ -48,9 +48,10 @@ namespace FootballFieldReservation
             {
                 GlobalVar.showMessage("Unknown error ... \n" + ex.Message, WarningType.Danger, Master);
             }
-
-            command.Connection.Close();
-
+            finally
+            {
+                command.Connection.Close();
+            }
 
 
 

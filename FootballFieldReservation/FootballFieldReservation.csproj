@@ -110,6 +110,7 @@
     <Content Include="Bootstrap\css\bootstrap.min.css" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery-3.5.1.slim.min.js" />
+    <Content Include="Bootstrap\js\jquery-ui-timepicker-addon.js" />
     <Content Include="Bootstrap\js\popper.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

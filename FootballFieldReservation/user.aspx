@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
@@ -26,8 +26,9 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Field ID</label>
-                                <div class="form-group">
+                                <label>Field ID</label><asp:RegularExpressionValidator ID="onlyNum" runat="server" ControlToValidate="fieldIdTextBox" ErrorMessage="*" ForeColor="#FF3300" ValidationExpression="\d{4}"></asp:RegularExpressionValidator>
+&nbsp;<div class="form-group">
+   
                                     <div class="input-group">
                                         <asp:TextBox CssClass="form-control" ID="fieldIdTextBox" runat="server" placeholder="User id"></asp:TextBox>
                                     </div>
@@ -36,7 +37,7 @@
                             <div class="col-md-6">
                                 <label>Field Name</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="fielNameTextBox" runat="server" placeholder="Name"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="fielNameTextBox" runat="server" placeholder="Name" ReadOnly="True"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -44,14 +45,16 @@
                             <div class="col-md-6">
                                 Start Date <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="userStartDate" runat="server" placeholder="Start Date"></asp:TextBox>
+                                     <asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
+                                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Time"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label>End Date </label>
-                                &nbsp;<div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="userEndDateTextBox" runat="server" placeholder="End Date"></asp:TextBox>
+                               <div class="form-group">
+                                  <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Time"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -101,5 +104,5 @@
             </div>
         </div>
     </div>
-
+    <script>lNGU</script>
 </asp:Content>
