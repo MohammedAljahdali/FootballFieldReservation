@@ -132,7 +132,7 @@ namespace FootballFieldReservation
                 return add(cmd, "Adding User Successed", "Adding User Failed Try Again Please", master);
         }
 
-        public static bool search(SqlCommand cmd, TextBox[] textBoxes, String[] columns, Control[] controls, MasterPage Master)
+        public static SqlDataReader search(SqlCommand cmd, TextBox[] textBoxes, String[] columns, Control[] controls, MasterPage Master)
         {
 
             try
@@ -157,16 +157,16 @@ namespace FootballFieldReservation
                             control.Enabled = true;
                     }
                     GlobalVar.showMessage("Record Found", WarningType.Success, Master);
-                    return true;
+                    return dr;
                 }
                 else
                     GlobalVar.showMessage("Sorry Record Not Found", WarningType.Danger, Master);
-                return false;
+                return dr;
             } // end of try
             catch (Exception ex)
             {
                 GlobalVar.showMessage("error reading the database: " + ex.Message, WarningType.Danger, Master);
-                return false;
+                return null;
             }
             finally
             {

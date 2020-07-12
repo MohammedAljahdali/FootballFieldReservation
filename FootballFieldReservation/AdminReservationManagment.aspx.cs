@@ -24,7 +24,7 @@ namespace FootballFieldReservation
             }
             DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
             System.Diagnostics.Debug.WriteLine(startDate.ToString("yyyy-MM-dd H:mm:ss"));
-            string startDateString = startDate.ToString();
+            string startDateString = startDate.ToString("yyyy-MM-dd H:mm:ss");
             System.Diagnostics.Debug.WriteLine(startDateString);
             DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
             string endDateString = endDate.ToString("yyyy-MM-dd H:mm:ss");
@@ -43,10 +43,22 @@ namespace FootballFieldReservation
             GlobalVar.add(cmd, "Reservation added Successfully", "Reservation is Not Added, Try Again Please", Master);
             GlobalVar.display(resvTable, Master, "select * from [Resv]");
             GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox, resvUserIDTextBox, startTextBox, endTextBox });
+        }
 
-
-
-
+        protected void searchButton_Click(object sender, EventArgs e)
+        {
+            string srchsql = "select * from [Resv] where resv_id = @id";
+            SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
+            // Mapping Parameter
+            cmd.Parameters.AddWithValue("@id", int.Parse(resvIDTextBox.Text));
+            // System.Diagnostics.Debug.WriteLine(userIDTextBox.Text);
+            GlobalVar.search(
+                cmd,
+                new TextBox[] { resvFieldIDTextBox, resvUserIDTextBox },
+                new string[] { "resv_field_id", "resv_user_id"},
+                new Control[] { resvIDTextBox, updateButton, deleteButton },
+                Master
+                );
         }
     }
 }
