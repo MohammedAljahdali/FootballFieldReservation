@@ -59,10 +59,12 @@ namespace FootballFieldReservation
                 cmd.Connection.Close();
             }
 
-            string i = Calendar2.SelectedDate.ToString() + TextBox2.Text;
-            string j = Calendar1.SelectedDate.ToString() + TextBox1.Text;
-            fieldIdTextBox.Text = start.ToString();
-            fielNameTextBox.Text = i;
+            DateTime startDate = Calendar2.SelectedDate.AddHours(Double.Parse(TextBox2.Text.Substring(0, 2))).AddMinutes(Double.Parse(TextBox2.Text.Substring(3, 2)));
+            string startDateString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+            DateTime endDate = Calendar1.SelectedDate.AddHours(Double.Parse(TextBox1.Text.Substring(0, 2))).AddMinutes(Double.Parse(TextBox1.Text.Substring(3, 2)));
+            string endDateString = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+            fieldIdTextBox.Text = startDateString;
+            fielNameTextBox.Text = endDateString;
             return false;
         }
     }
