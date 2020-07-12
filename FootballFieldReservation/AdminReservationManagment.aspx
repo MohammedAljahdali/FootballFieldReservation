@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <asp:Label ID="dateVaildationLabel" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="dateVaildationLabel" runat="server" ForeColor="Red"></asp:Label>
                         </div>
                         <div class="row">
                             <div class="col-3">

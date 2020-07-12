@@ -17,7 +17,7 @@ namespace FootballFieldReservation
         protected void addButton_Click(object sender, EventArgs e)
         {
             DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
-            String startDateString = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2))).ToString("yyyy-MM-dd HH:mm:ss");
+            string startDateString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
             DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
             string endDateString = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2))).ToString("yyyy-MM-dd HH:mm:ss");
             TimeSpan timeSpan = endDate - startDate;
@@ -44,6 +44,7 @@ namespace FootballFieldReservation
             {
                 return;
             }
+
         }
     }
 }
