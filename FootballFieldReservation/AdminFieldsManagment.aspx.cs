@@ -32,6 +32,7 @@ namespace FootballFieldReservation
                 Master
                 );
             GlobalVar.display(fieldsTable, Master, "select * from [Field]");
+            cmd.Connection.Close();
         }
 
         protected void addButton_Click(object sender, EventArgs e)

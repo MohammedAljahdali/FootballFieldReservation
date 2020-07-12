@@ -22,11 +22,14 @@ namespace FootballFieldReservation
 
         protected void addB_Click(object sender, EventArgs e)
         {
-            if (GlobalVar.search(new SqlCommand("select * From Resv Where [resv_user_id]='" + GlobalVar.userID + "' and [resv_field_id]='"
-                + fieldIdTextBox.Text + "'", GlobalVar.connection), new TextBox[0], new string[0], new Control[0], Master))
-            {
-                GlobalVar.showMessage("you already have this reservation", WarningType.Warning, Master);
-            }
+            // Btw you the primary key does this for you, 
+            // also i commented this because I changed the method to return DataReader object so I could read data outside the search method
+            // nvm i removed the change but still you do not need this check
+            //if (GlobalVar.search(new SqlCommand("select * From Resv Where [resv_user_id]='" + GlobalVar.userID + "' and [resv_field_id]='"
+            //    + fieldIdTextBox.Text + "'", GlobalVar.connection), new TextBox[0], new string[0], new Control[0], Master))
+            //{
+            //    GlobalVar.showMessage("you already have this reservation", WarningType.Warning, Master);
+            //}
 
             checkTime();
 

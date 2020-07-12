@@ -19,7 +19,7 @@ namespace FootballFieldReservation
 
         protected void addButton_Click(object sender, EventArgs e)
         {
-            GlobalVar.addUser(userPasswordTextBox, null, userIDTextBox, userNameTextBox, null, false, Master);
+            GlobalVar.addUser(userPasswordTextBox, null, userIDTextBox, userNameTextBox, null, false, Master, userRoleTextBox.Text);
             GlobalVar.display(usersTable, Master, "select * from [User]");
             GlobalVar.clearFields(new TextBox[] { userNameTextBox, userIDTextBox, userRoleTextBox, userPasswordTextBox });
         }
@@ -39,6 +39,7 @@ namespace FootballFieldReservation
                 Master
                 );
             GlobalVar.display(usersTable, Master, "select * from [User]");
+            cmd.Connection.Close();
 
             try
             {
