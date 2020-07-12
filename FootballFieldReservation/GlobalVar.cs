@@ -248,34 +248,34 @@ namespace FootballFieldReservation
             }
         }
 
-        public static void vaildateEnteredDates(DateTime startDate, DateTime endDate, Label dateVaildationLabel)
+        public static bool vaildateEnteredDates(DateTime startDate, DateTime endDate, Label dateVaildationLabel)
         {
             TimeSpan timeSpan = endDate - startDate;
             TimeSpan startTimeSpan = startDate - DateTime.Now;
             if (startTimeSpan.TotalHours < 0)
             {
                 dateVaildationLabel.Text = "Please Enter a Correct Start Date";
-                return;
+                return false;
                 //System.Diagnostics.Debug.WriteLine("hey");
             }
             switch (DateTime.Compare(endDate, startDate))
             {
                 case 1:
-
                     break;
                 case 0:
                     dateVaildationLabel.Text = "Start and End dates can not be the same!";
-                    return;
+                    return false;
                 case -1:
                     dateVaildationLabel.Text = "Please Enter a Correct End Date";
-                    return;
+                    return false;
             }
             // check the is the resv time is at least 1 hour
             if (timeSpan.TotalHours < 1)
             {
                 dateVaildationLabel.Text = "The Reservation Duration most be at least 1 hour!";
-                return;
+                return false;
             }
+            return true;
         }
 
     }

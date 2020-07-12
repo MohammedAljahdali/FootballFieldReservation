@@ -20,6 +20,10 @@ namespace FootballFieldReservation
             string startDateString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
             DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
             string endDateString = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+            if (!GlobalVar.vaildateEnteredDates(startDate, endDate, dateVaildationLabel))
+            {
+                return;
+            }
 
            
 
