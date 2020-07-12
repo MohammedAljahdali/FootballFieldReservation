@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 <label>Field ID</label><asp:RegularExpressionValidator ID="onlyNum" runat="server" ControlToValidate="fieldIdTextBox" ErrorMessage="*" ForeColor="#FF3300" ValidationExpression="\d{4}"></asp:RegularExpressionValidator>
 &nbsp;<div class="form-group">
-   
+   <
                                     <div class="input-group">
                                         <asp:TextBox CssClass="form-control" ID="fieldIdTextBox" runat="server" placeholder="User id"></asp:TextBox>
                                     </div>
@@ -104,5 +104,5 @@
             </div>
         </div>
     </div>
-    <script>lNGU</script>
+
 </asp:Content>
