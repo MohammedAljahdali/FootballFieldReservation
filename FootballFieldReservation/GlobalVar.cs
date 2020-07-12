@@ -239,11 +239,42 @@ namespace FootballFieldReservation
                 textBox.Text = "";
             }
         }
+
         public static void headerChanger(string [] colName,GridView grid)
         {
             for(int i =0; i < colName.Length; i++)
             {
                 grid.HeaderRow.Cells[i].Text = colName[i];
+            }
+        }
+
+        public static void vaildateEnteredDates(DateTime startDate, DateTime endDate, Label dateVaildationLabel)
+        {
+            TimeSpan timeSpan = endDate - startDate;
+            TimeSpan startTimeSpan = startDate - DateTime.Now;
+            if (startTimeSpan.TotalHours < 0)
+            {
+                dateVaildationLabel.Text = "Please Enter a Correct Start Date";
+                return;
+                //System.Diagnostics.Debug.WriteLine("hey");
+            }
+            switch (DateTime.Compare(endDate, startDate))
+            {
+                case 1:
+
+                    break;
+                case 0:
+                    dateVaildationLabel.Text = "Start and End dates can not be the same!";
+                    return;
+                case -1:
+                    dateVaildationLabel.Text = "Please Enter a Correct End Date";
+                    return;
+            }
+            // check the is the resv time is at least 1 hour
+            if (timeSpan.TotalHours < 1)
+            {
+                dateVaildationLabel.Text = "The Reservation Duration most be at least 1 hour!";
+                return;
             }
         }
 
