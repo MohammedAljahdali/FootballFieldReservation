@@ -39,7 +39,7 @@ namespace FootballFieldReservation
 
         protected void addB_Click(object sender, EventArgs e)
         {
-            if()
+            
         }
     }
 }
