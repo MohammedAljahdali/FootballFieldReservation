@@ -52,7 +52,7 @@
                                 <label>Start Date</label>
                                 <div class="form-group">
                                     <asp:Calendar ID="startCalendar" runat="server"></asp:Calendar>
-                                    <asp:TextBox ID="startTextBox" runat="server" TextMode="Time"></asp:TextBox>
+                                    <asp:TextBox ID="startTextBox" runat="server" TextMode="Time" OnTextChanged="startTextBox_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
