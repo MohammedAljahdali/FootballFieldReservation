@@ -41,6 +41,7 @@ namespace FootballFieldReservation
             panelMessage.CssClass = string.Format("alert alert-{0} alert-dismissable", type.ToString().ToLower());
             panelMessage.Attributes.Add("role", "alert");
             panelMessage.Visible = true;
+            
         }
 
         public static void display(GridView gridView, MasterPage master, string sql)
@@ -107,8 +108,9 @@ namespace FootballFieldReservation
             }
         }
 
-        public static bool addUser(TextBox passwordInputField, TextBox confirmPasswordInputField, TextBox idInputField, TextBox nameInputField, Label confirmPasswordValidation, bool confirmPassword, MasterPage master)
+        public static bool addUser(TextBox passwordInputField, TextBox confirmPasswordInputField, TextBox idInputField, TextBox nameInputField, Label confirmPasswordValidation, bool confirmPassword, MasterPage master, string role)
         {
+            
             if (confirmPassword)
             {
                 if (passwordInputField.Text != confirmPasswordInputField.Text)
@@ -117,6 +119,7 @@ namespace FootballFieldReservation
                     confirmPasswordValidation.ForeColor = System.Drawing.Color.Red;
                     return false;
                 }
+                
             }
 
 
@@ -125,7 +128,7 @@ namespace FootballFieldReservation
             cmd.Parameters.AddWithValue("@user_id", idInputField.Text);
             cmd.Parameters.AddWithValue("@user_name", nameInputField.Text);
             cmd.Parameters.AddWithValue("@user_password", passwordInputField.Text);
-            cmd.Parameters.AddWithValue("@user_role", "user");
+            cmd.Parameters.AddWithValue("@user_role", role);
             if (confirmPassword)
                 return add(cmd,"Signing Up Successed", "Signing Up Failed Try Again Please", master);
             else
@@ -161,16 +164,12 @@ namespace FootballFieldReservation
                 }
                 else
                     GlobalVar.showMessage("Sorry Record Not Found", WarningType.Danger, Master);
-                return dr;
+                return null;
             } // end of try
             catch (Exception ex)
             {
                 GlobalVar.showMessage("error reading the database: " + ex.Message, WarningType.Danger, Master);
                 return null;
-            }
-            finally
-            {
-                cmd.Connection.Close();
             }
         }
 

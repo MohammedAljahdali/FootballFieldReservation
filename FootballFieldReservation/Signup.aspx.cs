@@ -19,7 +19,7 @@ namespace FootballFieldReservation
         protected void submitClicked(object sender, EventArgs e)
         {
             
-            bool success = GlobalVar.addUser(passwordInputField, confirmPasswordInputField, idInputField, nameInputField, confirmPasswordValidation, true, Master);
+            bool success = GlobalVar.addUser(passwordInputField, confirmPasswordInputField, idInputField, nameInputField, confirmPasswordValidation, true, Master, "user");
             if (success)
             {
                 Response.Redirect("Login.aspx");

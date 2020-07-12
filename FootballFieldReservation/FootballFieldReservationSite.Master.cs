@@ -41,6 +41,7 @@ namespace FootballFieldReservation
                     logoutLinkButton.Enabled = true;
                     adminLoginLink.Enabled = false;
                     loginLinkButton.Enabled = false;
+                    userPageLinkButton.Enabled = false;
                     break;
                 default:
                     break;
