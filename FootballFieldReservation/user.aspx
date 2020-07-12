@@ -26,48 +26,47 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>User ID</label>
+                                <label>Field ID</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="userIdTextBox" runat="server" placeholder="User id"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="fieldIdTextBox" runat="server" placeholder="User id"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label>Name</label>
+                                <label>Field Name</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="userNameTextBox" runat="server" placeholder="Name"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="fielNameTextBox" runat="server" placeholder="Name"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                Password
-                                <div class="form-group">
+                                Start Date <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="userPasswordText" runat="server" placeholder="Password"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="userStartDate" runat="server" placeholder="Start Date"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label>Confirm password </label>
+                                <label>End Date </label>
                                 &nbsp;<div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="userConfiemPasswordTextBox" runat="server" placeholder="Confirm Password"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="userEndDateTextBox" runat="server" placeholder="End Date"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                  <asp:Button ID="updateB" class="btn btn-lg btn-block btn-success" Width="230" runat="server" Text="Update" OnClick="updateB_Click" />
+                                <asp:Button ID="searchB" class="btn btn-lg btn-block btn-primary" runat="server" Text="Search" />
                             </div>
                             <div class="col-3">
-                               
+                                <asp:Button ID="addB" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" OnClick="addB_Click" />
                             </div>
                             <div class="col-3">
-                              <asp:Button ID="deleteB" class="btn btn-lg btn-block btn-danger" runat="server" Width="230" Text="Delete Account" OnClick="deleteB_Click"  />
+                                  <asp:Button ID="updateButton" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
                             </div>
                             <div class="col-3">
-                               
+                                <asp:Button ID="deleteButton" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" />
                             </div>
                         </div>
                     </div>
@@ -80,7 +79,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h4 class="text-center">User Reservations</h4>
+                                <h4 class="text-center">
+                                   Reservations
+                                   
+                                </h4>
                             </div>
                         </div>
                         <div class="row">

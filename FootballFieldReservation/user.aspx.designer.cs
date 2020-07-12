@@ -24,58 +24,76 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// userIdTextBox control.
+        /// fieldIdTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userIdTextBox;
+        protected global::System.Web.UI.WebControls.TextBox fieldIdTextBox;
 
         /// <summary>
-        /// userNameTextBox control.
+        /// fielNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox fielNameTextBox;
 
         /// <summary>
-        /// userPasswordText control.
+        /// userStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userPasswordText;
+        protected global::System.Web.UI.WebControls.TextBox userStartDate;
 
         /// <summary>
-        /// userConfiemPasswordTextBox control.
+        /// userEndDateTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userConfiemPasswordTextBox;
+        protected global::System.Web.UI.WebControls.TextBox userEndDateTextBox;
 
         /// <summary>
-        /// updateB control.
+        /// searchB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button updateB;
+        protected global::System.Web.UI.WebControls.Button searchB;
 
         /// <summary>
-        /// deleteB control.
+        /// addB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deleteB;
+        protected global::System.Web.UI.WebControls.Button addB;
+
+        /// <summary>
+        /// updateButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button updateButton;
+
+        /// <summary>
+        /// deleteButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button deleteButton;
 
         /// <summary>
         /// resvTable control.
