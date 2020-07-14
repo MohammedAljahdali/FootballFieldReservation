@@ -1824,6 +1824,7 @@
     <Content Include="fontawesome\webfonts\fa-solid-900.woff2" />
     <Content Include="Resources\field.jpg" />
     <Content Include="Resources\field1.jpg" />
+    <Content Include="Resv.aspx" />
     <Content Include="Signup.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="AdminUserMangament.aspx" />
@@ -1856,7 +1857,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="user.aspx" />
+    <Content Include="User.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -1897,12 +1898,19 @@
     <Compile Include="FootballFieldReservationSite.Master.designer.cs">
       <DependentUpon>FootballFieldReservationSite.Master</DependentUpon>
     </Compile>
-    <Compile Include="user.aspx.cs">
-      <DependentUpon>user.aspx</DependentUpon>
+    <Compile Include="Resv.aspx.cs">
+      <DependentUpon>Resv.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="user.aspx.designer.cs">
-      <DependentUpon>user.aspx</DependentUpon>
+    <Compile Include="Resv.aspx.designer.cs">
+      <DependentUpon>Resv.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
