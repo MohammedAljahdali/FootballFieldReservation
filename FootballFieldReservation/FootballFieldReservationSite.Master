@@ -45,7 +45,7 @@
                             <asp:LinkButton ID="homeLinkButton" CssClass="nav-link" runat="server" PostBackUrl="Home.aspx" CausesValidation="False">Home</asp:LinkButton>
                         </li>
                         <li class="nav-item">
-                             <asp:LinkButton ID="resvLinkButton" CssClass="nav-link" runat="server" PostBackUrl="#" CausesValidation="False">Reservations</asp:LinkButton>
+                             <asp:LinkButton ID="resvLinkButton" CssClass="nav-link" runat="server" PostBackUrl="Resv.aspx" CausesValidation="False">Reservations</asp:LinkButton>
                         </li>
                         <li class="nav-item">
                             <asp:LinkButton ID="userPageLinkButton" CssClass="nav-link" runat="server" PostBackUrl="user.aspx" CausesValidation="False">Manage Your Reservations</asp:LinkButton>
