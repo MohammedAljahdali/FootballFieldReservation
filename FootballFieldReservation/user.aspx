@@ -14,7 +14,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p class="text-center">Add, Update and Delete Fields</p>
+                                <p class="text-center">Add, Update and Delete Reservations</p>
                             </div>
                         </div>
                         <div class="row">
@@ -24,40 +24,45 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Field ID</label>
+                                <label>Reservation ID</label>
                                 <div class="form-group">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="fieldIDTextBox" ErrorMessage="*" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="fieldIDTextBox" ForeColor="Red" ValidationGroup="1"></asp:RegularExpressionValidator>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorID" runat="server" ControlToValidate="fieldIDTextBox" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorID" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="fieldIDTextBox" ForeColor="Red"></asp:RegularExpressionValidator>
-                                    <asp:TextBox CssClass="form-control" ID="fieldIDTextBox" runat="server" placeholder="Field ID"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="resvIDTextBox" ErrorMessage="*" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="resvIDTextBox" ForeColor="Red" ValidationGroup="1"></asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorID" runat="server" ControlToValidate="resvIDTextBox" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorID" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="resvIDTextBox" ForeColor="Red"></asp:RegularExpressionValidator>
+                                    <asp:TextBox CssClass="form-control" ID="resvIDTextBox" runat="server" placeholder="Reservation ID"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label>Field Name</label>
+                                <label>Field ID</label>
                                 <div class="form-group">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server" ControlToValidate="fieldNameTextBox" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorName" runat="server" ControlToValidate="fieldNameTextBox" ErrorMessage="Invalid" ValidationExpression="([A-Z][a-zA-Z]*)" ForeColor="Red"></asp:RegularExpressionValidator>
-                                    <asp:TextBox CssClass="form-control" ID="fieldNameTextBox" runat="server" placeholder="Field Name"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="resvFieldIDTextBox" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="resvFieldIDTextBox" ForeColor="Red"></asp:RegularExpressionValidator>
+                                    <asp:TextBox CssClass="form-control" ID="resvFieldIDTextBox" runat="server" placeholder="Field ID"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
+                        
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
-                                <label>Field Address</label>
+                                <label>Start Date</label>
                                 <div class="form-group">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fieldAddressTextBox" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:TextBox CssClass="form-control" ID="fieldAddressTextBox" runat="server" placeholder="Field Address"></asp:TextBox>
+                                    <asp:Calendar ID="startCalendar" runat="server"></asp:Calendar>
+                                    <asp:TextBox ID="startTextBox" runat="server" TextMode="Time"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label>Field Capacity</label>
+                                <label>End Date</label>
                                 <div class="form-group">
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="fieldCapacityTextBox" ForeColor="Red"></asp:RegularExpressionValidator>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="fieldCapacityTextBox" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:TextBox CssClass="form-control" ID="fieldCapacityTextBox" runat="server" placeholder="Field Capacity"></asp:TextBox>
+                                    <asp:Calendar ID="endCalendar" runat="server"></asp:Calendar>
+                                    <asp:TextBox ID="endTextBox" runat="server" TextMode="Time"></asp:TextBox>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                            <asp:Label ID="dateVaildationLabel" runat="server" ForeColor="Red"></asp:Label>
                         </div>
                         <div class="row">
                             <div class="col-3">
@@ -93,7 +98,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="fieldsTable" runat="server"></asp:GridView>
+                                <asp:GridView class="table table-striped table-bordered" ID="ReservationTable" runat="server"></asp:GridView>
                             </div>
                         </div>
                     </div>

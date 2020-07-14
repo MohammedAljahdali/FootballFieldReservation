@@ -13,7 +13,8 @@ namespace FootballFieldReservation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GlobalVar.display(resvTable, Master, "select * from [Resv]");
+            GlobalVar.display(resvTable ,Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
+            GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
             updateButton.Enabled = false;
             deleteButton.Enabled = false;
         }
@@ -48,7 +49,8 @@ namespace FootballFieldReservation
             cmd.Parameters.AddWithValue("@start", startDateString);
             cmd.Parameters.AddWithValue("@end", endDateString);
             GlobalVar.add(cmd, "Reservation added Successfully", "Reservation is Not Added, Try Again Please", Master);
-            GlobalVar.display(resvTable, Master, "select * from [Resv]");
+            GlobalVar.display(resvTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
+            GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
             GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox, resvUserIDTextBox, startTextBox, endTextBox });
             dateVaildationLabel.Text = "";
         }
@@ -118,7 +120,8 @@ namespace FootballFieldReservation
                 "update"
                 );
             dateVaildationLabel.Text = "";
-            GlobalVar.display(resvTable, Master, "select * from [Resv]");
+            GlobalVar.display(resvTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
+            GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
         }
 
         protected void deleteButton_Click(object sender, EventArgs e)
@@ -134,7 +137,8 @@ namespace FootballFieldReservation
                 Master,
                 "update"
                 );
-            GlobalVar.display(resvTable, Master, "select * from [Resv]");
+            GlobalVar.display(resvTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
+            GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
             dateVaildationLabel.Text = "";
         }
 

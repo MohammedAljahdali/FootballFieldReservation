@@ -51,40 +51,13 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorID;
 
         /// <summary>
-        /// fieldIDTextBox control.
+        /// resvIDTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fieldIDTextBox;
-
-        /// <summary>
-        /// RequiredFieldValidatorName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorName;
-
-        /// <summary>
-        /// RegularExpressionValidatorName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorName;
-
-        /// <summary>
-        /// fieldNameTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fieldNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox resvIDTextBox;
 
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -96,15 +69,6 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// fieldAddressTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fieldAddressTextBox;
-
-        /// <summary>
         /// RegularExpressionValidator2 control.
         /// </summary>
         /// <remarks>
@@ -114,22 +78,58 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
 
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// resvFieldIDTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.TextBox resvFieldIDTextBox;
 
         /// <summary>
-        /// fieldCapacityTextBox control.
+        /// startCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fieldCapacityTextBox;
+        protected global::System.Web.UI.WebControls.Calendar startCalendar;
+
+        /// <summary>
+        /// startTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox startTextBox;
+
+        /// <summary>
+        /// endCalendar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar endCalendar;
+
+        /// <summary>
+        /// endTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox endTextBox;
+
+        /// <summary>
+        /// dateVaildationLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label dateVaildationLabel;
 
         /// <summary>
         /// searchButton control.
@@ -168,12 +168,12 @@ namespace FootballFieldReservation
         protected global::System.Web.UI.WebControls.Button deleteButton;
 
         /// <summary>
-        /// fieldsTable control.
+        /// ReservationTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView fieldsTable;
+        protected global::System.Web.UI.WebControls.GridView ReservationTable;
     }
 }
