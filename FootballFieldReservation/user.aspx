@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="Home.aspx"><< Back to Home</a><br>
+               
                 <br>
             </div>
             <div class="col-md-6">
