@@ -12,7 +12,7 @@ namespace FootballFieldReservation
     public static class GlobalVar
     {
         public static string userRole = "";
-        public static string userID = "1855415";
+        public static string userID = "";
         public static string userName = "";
         public static string datePattren = "yyyy-MM-dd HH:mm:ss.fff";
         public static SqlConnection connection = new SqlConnection(
@@ -73,6 +73,7 @@ namespace FootballFieldReservation
             {
                 cmd.Connection.Close();
             }
+            cmd.Connection.Close();
         }
 
         public static bool add(SqlCommand cmd, String successMessage, String failMessage, MasterPage master)
@@ -88,11 +89,13 @@ namespace FootballFieldReservation
                 if (success == 1)
                 {
                     GlobalVar.showMessage(successMessage, WarningType.Success, master);
+                    cmd.Connection.Close();
                     return true;
                 }
                 else
                 {
                     GlobalVar.showMessage(failMessage, WarningType.Warning, master);
+                    cmd.Connection.Close();
                     return false;
                 }
 
@@ -228,6 +231,7 @@ namespace FootballFieldReservation
             {
                 cmd.Connection.Close();
             }
+            cmd.Connection.Close();
         }
 
 

@@ -22,9 +22,14 @@ namespace FootballFieldReservation
 
         protected void addButton_Click(object sender, EventArgs e)
         {
-            if (!vaildateInputDates()&&!isFree())
+            if (!vaildateInputDates())
                 return;
-
+            if (!isFree())
+            {
+                GlobalVar.showMessage("The date you have selected is not avalible .. try selecting diffrenet time or a day", WarningType.Warning, Master);
+                return;
+            }
+                
             DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
             string startDateString = startDate.ToString("yyyy-MM-dd H:mm:ss");
             DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
@@ -73,8 +78,13 @@ namespace FootballFieldReservation
 
         protected void updateButton_Click(object sender, EventArgs e)
         {
-            if (!vaildateInputDates()&&isFree())
+            if (!vaildateInputDates())
                 return;
+            if (!isFree())
+            {
+                GlobalVar.showMessage("The date you have selected is not avalible .. try selecting diffrenet time or a day", WarningType.Warning, Master);
+                return;
+            }
             //if (startTextBox.Text == "" || endTextBox.Text == "")
             //{
             //    GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox, resvUserIDTextBox, startTextBox, endTextBox });
@@ -175,38 +185,49 @@ namespace FootballFieldReservation
             try
             {
                 command.Connection.Open();
-               SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                         startDay = (DateTime)reader["resv_startDate"];
-                        endDay = (DateTime)reader["resv_endDate"];
-                   
-                    bool sameDay = false;
-                        if (startDay.ToShortDateString().Equals(startCalendar.SelectedDate.ToShortDateString()) || endDay.ToShortDateString().Equals(endCalendar.SelectedDate.ToShortDateString()))
-                        {
-                            sameDay = true;
-                        }
-                    if (sameDay && (startDay.Hour.ToString().Equals(startTextBox.Text.Substring(0, 2)) || endDay.Hour.ToString().Equals(endTextBox.Text.Substring(0, 2))))
-                        {
-                        GlobalVar.showMessage("The date selected is not available .. please select another day or time ..", WarningType.Warning, Master);
+                         endDay = (DateTime)reader["resv_endDate"];
+
+                    bool sameDay = startDay.ToShortDateString().Equals(startCalendar.SelectedDate.ToShortDateString());
+                    System.Diagnostics.Debug.WriteLine(startDay.ToShortDateString()+" DAY "+ startCalendar.SelectedDate.ToShortDateString());
+                    
+                    
+
+                    int endtInt = int.Parse(endDay.Hour.ToString()), startInt = int.Parse(startDay.Hour.ToString());
+                    int endTxtInt = int.Parse(endTextBox.Text.Substring(0, 2)), statTxtInt = int.Parse(startTextBox.Text.Substring(0, 2));
+                    //System.Diagnostics.Debug.WriteLine(endtInt+"  "+endTxtInt+"  Start : "+statTxtInt+"  "+startInt);
+                    //System.Diagnostics.Debug.WriteLine(sameDay && (endtInt.CompareTo(endTxtInt) <= 0) && (startInt.CompareTo(statTxtInt) >= 0));
+                    //System.Diagnostics.Debug.WriteLine(endtInt.CompareTo(endTxtInt) + " start  " + startInt.CompareTo(statTxtInt));
+
+
+                    if (sameDay && (endtInt.CompareTo(endTxtInt) <= 0) && (startInt.CompareTo(statTxtInt) >= 0))
+                    {
+                        command.Connection.Close();
                         return false;
-                        }
+                    }
+                       
                     }
                 }
             catch (SqlException ex)
             {
                 GlobalVar.showMessage("Sorry the server could not be contacted\n" + ex.Message, WarningType.Danger, Master);
+             
                 return false;
             }
             catch (Exception ex)
             {
                 GlobalVar.showMessage("Unknown error ... \n" + ex.Message, WarningType.Danger, Master);
+                
                 return false;
             }
             finally
             {
                 command.Connection.Close();
             }
+            command.Connection.Close();
             return true;
 
         }
