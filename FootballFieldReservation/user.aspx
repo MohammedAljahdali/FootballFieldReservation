@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h4 class="text-center">Fields Mangament</h4>
+                                <h4 class="text-center">Reservations Mangament</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -88,7 +88,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h4 class="text-center">Fields</h4>
+                                <h4 class="text-center">Reservations</h4>
                             </div>
                         </div>
                         <div class="row">
