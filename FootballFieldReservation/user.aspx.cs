@@ -14,8 +14,12 @@ namespace FootballFieldReservation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GlobalVar.display(ReservationTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
-            GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
+        
+            
+                GlobalVar.display(ReservationTable, Master,
+                "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv Where resv_user_id='"+GlobalVar.userID+"'");
+                GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
+            
             updateButton.Visible = false;
             deleteButton.Visible = false;
         }
@@ -26,16 +30,13 @@ namespace FootballFieldReservation
                 return;
             if (!isFree())
             {
-                GlobalVar.showMessage("The date you have selected is not avalible .. try selecting diffrenet time or a day", WarningType.Warning, Master);
+                GlobalVar.showMessage("The date you have selected is not available .. try selecting diffrenet time or a day", WarningType.Warning, Master);
                 return;
-            }
-                
+            }  
             DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
             string startDateString = startDate.ToString("yyyy-MM-dd H:mm:ss");
             DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
             string endDateString = endDate.ToString("yyyy-MM-dd H:mm:ss");
-            
-
             string register = "insert into Resv (resv_id, resv_user_id, resv_field_id, resv_startDate, resv_endDate) values (@id,@idu,@idf,@start,@end)";
             SqlCommand cmd = new SqlCommand(register, GlobalVar.connection);
             cmd.Parameters.AddWithValue("@id", resvIDTextBox.Text);
@@ -85,26 +86,12 @@ namespace FootballFieldReservation
                 GlobalVar.showMessage("The date you have selected is not avalible .. try selecting diffrenet time or a day", WarningType.Warning, Master);
                 return;
             }
-            //if (startTextBox.Text == "" || endTextBox.Text == "")
-            //{
-            //    GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox, resvUserIDTextBox, startTextBox, endTextBox });
-            //    dateVaildationLabel.Text = "Select a Time Please!";
-            //    resvIDTextBox.Enabled = true;
-            //    return;
-            //}
             DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
             System.Diagnostics.Debug.WriteLine(startDate.ToString("yyyy-MM-dd H:mm:ss"));
             string startDateString = startDate.ToString("yyyy-MM-dd H:mm:ss");
             System.Diagnostics.Debug.WriteLine(startDateString);
             DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
             string endDateString = endDate.ToString("yyyy-MM-dd H:mm:ss");
-            //if (!GlobalVar.vaildateEnteredDates(startDate, endDate, dateVaildationLabel))
-            //{
-            //    GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox, resvUserIDTextBox, startTextBox, endTextBox });
-            //    resvIDTextBox.Enabled = true;
-            //    return;
-            //}
-
             string updatesql = "update [Resv] set resv_user_id=@idu,resv_field_id=@idf,resv_startDate=@start, resv_endDate=@end where resv_id=@id";
             SqlCommand cmd = new SqlCommand(updatesql, GlobalVar.connection);
             cmd.Parameters.AddWithValue("@id", resvIDTextBox.Text);
@@ -188,27 +175,24 @@ namespace FootballFieldReservation
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                        startDay = (DateTime)reader["resv_startDate"];
-                         endDay = (DateTime)reader["resv_endDate"];
+                         startDay =Convert.ToDateTime( reader["resv_startDate"] );
+                         endDay =  Convert.ToDateTime( reader["resv_endDate"] );
 
-                    bool sameDay = startDay.ToShortDateString().Equals(startCalendar.SelectedDate.ToShortDateString());
-                    System.Diagnostics.Debug.WriteLine(startDay.ToShortDateString()+" DAY "+ startCalendar.SelectedDate.ToShortDateString());
-                    
-                    
+                    DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
+                    DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
 
-                    int endtInt = int.Parse(endDay.Hour.ToString()), startInt = int.Parse(startDay.Hour.ToString());
-                    int endTxtInt = int.Parse(endTextBox.Text.Substring(0, 2)), statTxtInt = int.Parse(startTextBox.Text.Substring(0, 2));
-                    //System.Diagnostics.Debug.WriteLine(endtInt+"  "+endTxtInt+"  Start : "+statTxtInt+"  "+startInt);
-                    //System.Diagnostics.Debug.WriteLine(sameDay && (endtInt.CompareTo(endTxtInt) <= 0) && (startInt.CompareTo(statTxtInt) >= 0));
-                    //System.Diagnostics.Debug.WriteLine(endtInt.CompareTo(endTxtInt) + " start  " + startInt.CompareTo(statTxtInt));
-
-
-                    if (sameDay && (endtInt.CompareTo(endTxtInt) <= 0) && (startInt.CompareTo(statTxtInt) >= 0))
+                    if (startDate.Day == startDay.Day)
                     {
-                        command.Connection.Close();
-                        return false;
+                        if ((endDate.TimeOfDay < endDay.TimeOfDay && endDate.TimeOfDay > startDay.TimeOfDay)
+                            || (startDate.TimeOfDay < endDay.TimeOfDay && startDate.TimeOfDay > startDay.TimeOfDay)
+                            || (startDay.TimeOfDay == startDate.TimeOfDay || endDate.TimeOfDay == endDay.TimeOfDay))
+                        {
+                            command.Connection.Close();
+                            return false;
+                        }
+                          
+
                     }
-                       
                     }
                 }
             catch (SqlException ex)

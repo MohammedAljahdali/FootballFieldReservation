@@ -13,10 +13,14 @@ namespace FootballFieldReservation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (resvTable.Rows.Count != 0)
+            {
             GlobalVar.display(resvTable ,Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
             GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
-            updateButton.Enabled = false;
-            deleteButton.Enabled = false;
+            }
+
+            updateButton.Visible = false;
+            deleteButton.Visible = false;
         }
 
         protected void addButton_Click(object sender, EventArgs e)
@@ -77,7 +81,7 @@ namespace FootballFieldReservation
             endTextBox.Text = DateTime.Parse(dr["resv_endDate"].ToString()).ToString("HH:mm:ss");
             dateVaildationLabel.Text = "";
             cmd.Connection.Close();
-
+           
         }
 
         protected void updateButton_Click(object sender, EventArgs e)
