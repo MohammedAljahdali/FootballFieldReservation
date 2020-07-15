@@ -14,10 +14,9 @@ namespace FootballFieldReservation
         static bool isClicked = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-         
-            GlobalVar.display(resvTable ,Master, "select [resv_id] ,[resv_user_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
-            GlobalVar.headerChanger(new string[] { "ID", "Field ID","User ID", "Start Date", "End Date" }, resvTable);
-            
+
+            GlobalVar.display(resvTable ,Master, "select * From Resv");
+            GlobalVar.headerChanger(new string[] { "ID", "User ID", "Field ID", "Start Date", "End Date" }, resvTable);
 
             updateButton.Visible = false;
             deleteButton.Visible = false;
@@ -199,7 +198,56 @@ namespace FootballFieldReservation
                 resvIDTextBox.Enabled = true;
                 return false;
             }
+            return isFree();
+        }
+
+        public bool isFree()
+        {
+            DateTime startDateReserved, endDateReserved;
+            SqlCommand command = new SqlCommand("select * from Resv where [resv_field_id]='" + resvFieldIDTextBox.Text + "'", GlobalVar.connection);
+            DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
+            DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
+            try
+            {
+                command.Connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    startDateReserved = Convert.ToDateTime(reader["resv_startDate"]);
+                    endDateReserved = Convert.ToDateTime(reader["resv_endDate"]);
+
+                    if (startDate.Day == startDateReserved.Day)
+                    {
+                        if ((startDate <= startDateReserved && endDate >= startDateReserved)
+                            || (startDate <= endDateReserved && endDate >= endDateReserved))
+                        {
+                            command.Connection.Close();
+                            return false;
+                        }
+
+
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                GlobalVar.showMessage("Sorry the server could not be contacted\n" + ex.Message, WarningType.Danger, Master);
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                GlobalVar.showMessage("Unknown error ... \n" + ex.Message, WarningType.Danger, Master);
+
+                return false;
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+            command.Connection.Close();
             return true;
+
         }
     }
 }

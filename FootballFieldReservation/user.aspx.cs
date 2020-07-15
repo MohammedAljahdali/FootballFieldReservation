@@ -17,9 +17,9 @@ namespace FootballFieldReservation
         {
         
             
-                GlobalVar.display(ReservationTable, Master,
+            GlobalVar.display(ReservationTable, Master,
                 "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv Where resv_user_id='"+GlobalVar.userID+"'");
-                GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
+            GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
             
             updateButton.Visible = false;
             deleteButton.Visible = false;
