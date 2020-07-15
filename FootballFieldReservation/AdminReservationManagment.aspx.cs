@@ -26,6 +26,7 @@ namespace FootballFieldReservation
         {
             if (!vaildateInputDates())
                 return;
+              
             //if (startTextBox.Text == "" || endTextBox.Text == "")
             //{
             //    GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox, resvUserIDTextBox, startTextBox, endTextBox });
@@ -104,7 +105,7 @@ namespace FootballFieldReservation
 
         protected void updateButton_Click(object sender, EventArgs e)
         {
-            if (!vaildateInputDates())
+            if (!vaildateInputDates()) 
                 return;
             //if (startTextBox.Text == "" || endTextBox.Text == "")
             //{
@@ -216,11 +217,12 @@ namespace FootballFieldReservation
                     startDateReserved = Convert.ToDateTime(reader["resv_startDate"]);
                     endDateReserved = Convert.ToDateTime(reader["resv_endDate"]);
 
-                    if (startDate.Day == startDateReserved.Day)
+                    if (startDate.Day == startDateReserved.Day&&startDate.Month==startDateReserved.Month)
                     {
                         if ((startDate <= startDateReserved && endDate >= startDateReserved)
                             || (startDate <= endDateReserved && endDate >= endDateReserved))
                         {
+                            GlobalVar.showMessage("The date you have selected is not available .. try selecting diffrenet time or a day", WarningType.Warning, Master);
                             command.Connection.Close();
                             return false;
                         }
