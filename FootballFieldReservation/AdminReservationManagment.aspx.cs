@@ -11,12 +11,12 @@ namespace FootballFieldReservation
 {
     public partial class AdminReservationManagment : System.Web.UI.Page
     {
+        static bool isClicked = false;
         protected void Page_Load(object sender, EventArgs e)
         {
 
             GlobalVar.display(resvTable ,Master, "select * From Resv");
             GlobalVar.headerChanger(new string[] { "ID", "User ID", "Field ID", "Start Date", "End Date" }, resvTable);
-
 
             updateButton.Visible = false;
             deleteButton.Visible = false;
@@ -60,6 +60,19 @@ namespace FootballFieldReservation
 
         protected void searchButton_Click(object sender, EventArgs e)
         {
+            if (isClicked)
+            {
+                resvIDTextBox.Enabled = true;
+                updateButton.Visible = false;
+                deleteButton.Visible = false;
+                GlobalVar.clearFields(new TextBox[] { resvIDTextBox, startTextBox, endTextBox ,resvFieldIDTextBox,resvUserIDTextBox});
+                startCalendar.SelectedDates.Clear();
+                endCalendar.SelectedDates.Clear();
+                isClicked = false;
+                return;
+
+            }
+            isClicked = true;
             string srchsql = "select * from [Resv] where resv_id = @id";
             SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
             // Mapping Parameter
@@ -73,14 +86,20 @@ namespace FootballFieldReservation
                 Master
                 );
             if (dr is null)
+            {
+                isClicked = false;
                 return;
+            }
+            deleteButton.Visible = true;
+            updateButton.Visible = true;
             startCalendar.SelectedDate =DateTime.Parse(((DateTime)dr["resv_startDate"]).ToShortDateString());
             endCalendar.SelectedDate = DateTime.Parse(((DateTime)dr["resv_endDate"]).ToShortDateString());
             startTextBox.Text = DateTime.Parse(dr["resv_startDate"].ToString()).ToString("HH:mm:ss");
             endTextBox.Text = DateTime.Parse(dr["resv_endDate"].ToString()).ToString("HH:mm:ss");
             dateVaildationLabel.Text = "";
             cmd.Connection.Close();
-           
+
+
         }
 
         protected void updateButton_Click(object sender, EventArgs e)
@@ -125,6 +144,12 @@ namespace FootballFieldReservation
             dateVaildationLabel.Text = "";
             GlobalVar.display(resvTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
             GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
+            if (deleteButton.Visible)
+            {
+                deleteButton.Visible = false;
+                updateButton.Visible = false;
+                isClicked = false;
+            }
         }
 
         protected void deleteButton_Click(object sender, EventArgs e)
@@ -143,6 +168,13 @@ namespace FootballFieldReservation
             GlobalVar.display(resvTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
             GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, resvTable);
             dateVaildationLabel.Text = "";
+            if (deleteButton.Visible)
+            {
+                deleteButton.Visible = false;
+                updateButton.Visible = false;
+                isClicked = false;
+            }
+
         }
 
         protected bool vaildateInputDates()

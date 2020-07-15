@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -41,7 +43,9 @@ namespace FootballFieldReservation
             panelMessage.CssClass = string.Format("alert alert-{0} alert-dismissable", type.ToString().ToLower());
             panelMessage.Attributes.Add("role", "alert");
             panelMessage.Visible = true;
-            
+
+        
+
         }
 
         public static void display(GridView gridView, MasterPage master, string sql)
@@ -163,15 +167,18 @@ namespace FootballFieldReservation
                             control.Enabled = true;
                     }
                     GlobalVar.showMessage("Record Found", WarningType.Success, Master);
+                    
                     return dr;
                 }
                 else
                     GlobalVar.showMessage("Sorry Record Not Found", WarningType.Danger, Master);
+                cmd.Connection.Close();
                 return null;
             } // end of try
             catch (Exception ex)
             {
                 GlobalVar.showMessage("error reading the database: " + ex.Message, WarningType.Danger, Master);
+                cmd.Connection.Close();
                 return null;
             }
         }
