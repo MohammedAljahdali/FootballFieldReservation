@@ -63,7 +63,7 @@ namespace FootballFieldReservation
 
             }
             isClicked = true;
-            string srchsql = "select * from [Resv] where resv_id = @id";
+            string srchsql = "select * from [Resv] where resv_id = @id ";
             SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
             cmd.Parameters.AddWithValue("@id", int.Parse(resvIDTextBox.Text));
           
@@ -227,8 +227,5 @@ namespace FootballFieldReservation
             return true;
 
         }
-    }
-
-  
-    
+    }  
 }

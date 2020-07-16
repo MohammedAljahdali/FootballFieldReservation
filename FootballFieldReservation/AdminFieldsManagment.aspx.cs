@@ -13,6 +13,7 @@ namespace FootballFieldReservation
         protected void Page_Load(object sender, EventArgs e)
         {
             GlobalVar.display(fieldsTable, Master, "select * from [Field]");
+            GlobalVar.headerChanger(new string[] { "ID", "Name", "Capacity", "Address" }, fieldsTable);
             updateButton.Enabled = false;
             deleteButton.Enabled = false;
         }
