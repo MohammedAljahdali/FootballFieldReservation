@@ -30,6 +30,7 @@ namespace FootballFieldReservation
             if (!vaildateInputDates())
                 return;
 
+
             DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
             string startDateString = startDate.ToString("yyyy-MM-dd H:mm:ss");
             DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
@@ -63,10 +64,10 @@ namespace FootballFieldReservation
 
             }
             isClicked = true;
-            string srchsql = "select * from [Resv] where resv_id = @id ";
+            string srchsql = "select * from [Resv] where resv_id = @id and resv_user_id = @user_id";
             SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
             cmd.Parameters.AddWithValue("@id", int.Parse(resvIDTextBox.Text));
-          
+            cmd.Parameters.AddWithValue("@user_id", int.Parse(GlobalVar.userID));
             SqlDataReader dr = GlobalVar.search(
                 cmd,
                 new TextBox[] { resvFieldIDTextBox },
