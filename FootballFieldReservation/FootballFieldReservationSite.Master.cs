@@ -52,6 +52,7 @@ namespace FootballFieldReservation
         {
             GlobalVar.userID = "";
             GlobalVar.userRole = "";
+            GlobalVar.userName = "";
             Response.Redirect("Login.aspx");
             changeUserStatus();
         }
