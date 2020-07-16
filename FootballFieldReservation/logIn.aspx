@@ -12,11 +12,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <asp:TextBox ID="userNameTxt" runat="server" CssClass="form-control" placeholder="username"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorID" runat="server" ControlToValidate="userNameTxt" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorID" runat="server" ErrorMessage="Invalid" ValidationExpression="^[0-9]*$" ControlToValidate="userNameTxt" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:TextBox ID="userNameTxt" runat="server" CssClass="form-control" placeholder="user id"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="passwordTxt" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="passwordTxt" runat="server" CssClass="form-control" placeholder="password" TextMode="Password"></asp:TextBox>
                         </div>
                     </div>
