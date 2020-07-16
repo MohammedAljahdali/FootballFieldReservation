@@ -17,9 +17,9 @@ namespace FootballFieldReservation
         {
         
             
-                GlobalVar.display(ReservationTable, Master,
+            GlobalVar.display(ReservationTable, Master,
                 "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv Where resv_user_id='"+GlobalVar.userID+"'");
-                GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
+            GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
             
             updateButton.Visible = false;
             deleteButton.Visible = false;
@@ -29,11 +29,7 @@ namespace FootballFieldReservation
         {
             if (!vaildateInputDates())
                 return;
-            if (!isFree())
-            {
-                GlobalVar.showMessage("The date you have selected is not available .. try selecting diffrenet time or a day", WarningType.Warning, Master);
-                return;
-            }  
+
             DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
             string startDateString = startDate.ToString("yyyy-MM-dd H:mm:ss");
             DateTime endDate = endCalendar.SelectedDate.AddHours(Double.Parse(endTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(endTextBox.Text.Substring(3, 2)));
@@ -67,10 +63,10 @@ namespace FootballFieldReservation
 
             }
             isClicked = true;
-            string srchsql = "select * from [Resv] where resv_id = @id and resv_user_id = @user_id";
+            string srchsql = "select * from [Resv] where resv_id = @id ";
             SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
             cmd.Parameters.AddWithValue("@id", int.Parse(resvIDTextBox.Text));
-            cmd.Parameters.AddWithValue("@user_id", int.Parse(GlobalVar.userID));
+          
             SqlDataReader dr = GlobalVar.search(
                 cmd,
                 new TextBox[] { resvFieldIDTextBox },
@@ -100,11 +96,7 @@ namespace FootballFieldReservation
         {
             if (!vaildateInputDates())
                 return;
-            if (!isFree())
-            {
-                GlobalVar.showMessage("The date you have selected is not avalible .. try selecting diffrenet time or a day", WarningType.Warning, Master);
-                return;
-            }
+           
             DateTime startDate = startCalendar.SelectedDate.AddHours(Double.Parse(startTextBox.Text.Substring(0, 2))).AddMinutes(Double.Parse(startTextBox.Text.Substring(3, 2)));
             System.Diagnostics.Debug.WriteLine(startDate.ToString("yyyy-MM-dd H:mm:ss"));
             string startDateString = startDate.ToString("yyyy-MM-dd H:mm:ss");
@@ -184,7 +176,7 @@ namespace FootballFieldReservation
                 resvIDTextBox.Enabled = true;
                 return false;
             }
-            return true;
+            return isFree();
         }
         public bool isFree()
         {
@@ -208,6 +200,7 @@ namespace FootballFieldReservation
                             || (startDate.TimeOfDay < endDay.TimeOfDay && startDate.TimeOfDay > startDay.TimeOfDay)
                             || (startDay.TimeOfDay == startDate.TimeOfDay || endDate.TimeOfDay == endDay.TimeOfDay))
                         {
+                            GlobalVar.showMessage("The date you have selected is not available .. try selecting diffrenet time or a day", WarningType.Warning, Master);
                             command.Connection.Close();
                             return false;
                         }
@@ -234,8 +227,5 @@ namespace FootballFieldReservation
             return true;
 
         }
-    }
-
-  
-    
+    }  
 }
