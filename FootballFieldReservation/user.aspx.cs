@@ -46,7 +46,8 @@ namespace FootballFieldReservation
             cmd.Parameters.AddWithValue("@start", startDateString);
             cmd.Parameters.AddWithValue("@end", endDateString);
             GlobalVar.add(cmd, "Reservation added Successfully", "Reservation is Not Added, Try Again Please", Master);
-            GlobalVar.display(ReservationTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
+            GlobalVar.display(ReservationTable, Master,
+                "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv Where resv_user_id='" + GlobalVar.userID + "'");
             GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
             GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox,  startTextBox, endTextBox });
             dateVaildationLabel.Text = "";
@@ -67,9 +68,10 @@ namespace FootballFieldReservation
 
             }
             isClicked = true;
-            string srchsql = "select * from [Resv] where resv_id = @id";
+            string srchsql = "select * from [Resv] where resv_id = @id and resv_user_id = @user_id";
             SqlCommand cmd = new SqlCommand(srchsql, GlobalVar.connection);
             cmd.Parameters.AddWithValue("@id", int.Parse(resvIDTextBox.Text));
+            cmd.Parameters.AddWithValue("@user_id", int.Parse(GlobalVar.userID));
           
             SqlDataReader dr = GlobalVar.search(
                 cmd,
@@ -127,7 +129,8 @@ namespace FootballFieldReservation
                 "update"
                 );
             dateVaildationLabel.Text = "";
-            GlobalVar.display(ReservationTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
+            GlobalVar.display(ReservationTable, Master,
+                "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv Where resv_user_id='" + GlobalVar.userID + "'");
             GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
             GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox, startTextBox, endTextBox });
             if (deleteButton.Visible)
@@ -151,7 +154,8 @@ namespace FootballFieldReservation
                 Master,
                 "update"
                 );
-            GlobalVar.display(ReservationTable, Master, "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv");
+            GlobalVar.display(ReservationTable, Master,
+                "select [resv_id] , [resv_field_id] , [resv_startDate] , [resv_endDate] From Resv Where resv_user_id='" + GlobalVar.userID + "'");
             GlobalVar.headerChanger(new string[] { "ID", "Field ID", "Start Date", "End Date" }, ReservationTable);
             GlobalVar.clearFields(new TextBox[] { resvFieldIDTextBox, resvIDTextBox, startTextBox, endTextBox });
             dateVaildationLabel.Text = "";
