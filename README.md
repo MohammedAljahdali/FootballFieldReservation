@@ -1,5 +1,6 @@
 # Football Field Reservation Website
-This a Project for the COCS308 Programming Lap. \n
+This a Project for the COCS308 Programming Lap.
+
 Website Features:
 - Two types of users Admin and Normal Users.
 - Admin can login.
